@@ -2,6 +2,11 @@
 import './App.css';
 import Navigation from './Components/Navigation';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import map from './map.webp';
+import eye from './eye.webp';
+import eye2 from './eye2.png'
+import './App.css';
+
 function App() {
   return (
     <div className="App">
