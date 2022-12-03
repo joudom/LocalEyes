@@ -27,24 +27,6 @@
   padding-left: 0.5vw;
 }
 
-.BG-img {
-  /* height: 87vmin;
-  width: 100vw; */
-  /* height: 100vh;
-  background-size:cover;
-  background-repeat:no-repeat;
-  width:100%;
-  background-position-x: center;
-  background-position-y: center; */
-
-  /* min-height: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  width: 100%; */
-}
-
 .background {
   min-height: 100%;
   background-repeat: no-repeat;
