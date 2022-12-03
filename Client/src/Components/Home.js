@@ -6,8 +6,12 @@ import PostBox from './Postbox';
 const Home = () => {
   return (
       <div>
-          <Navigation/>
+          <Navigation />
+          <div className="wrapper">
+          <LeftFilter />
           <PostBox/>
+          </div>
+          
     </div>
   )
 }

@@ -1,13 +1,12 @@
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import LeftFilter from "./LeftFilter";
 
 function PostBox() {
   return (
     <>
       <div className="wrapper">
-      <LeftFilter />
+    
         <Row xs={1} md={2} className="g-4">
           {Array.from({ length: 18 }).map((_, idx) => (
             <Col xs lg="2">
