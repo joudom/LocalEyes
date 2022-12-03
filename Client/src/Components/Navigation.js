@@ -20,16 +20,17 @@ const Navigation = () => {
           LocalEyes
           <img src={eye2} className="App-logo2" alt="logo" />
         </Navbar.Brand>
-        <Form inline className="px-2">
+        <Form inline className=" d-flex">
           <FormControl
             type="text"
             placeholder="search"
-            className="mr-sm-2 mx-5"
+            className="mr-sm-2 mx-2"
           />
-        </Form>
-        <Button variant="outline-success" className="mx-5">
+            <Button variant="outline-success" className="">
           Search
         </Button>
+        </Form>
+      
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
