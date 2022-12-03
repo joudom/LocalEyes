@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
      <Navigation/>
-      <img src={map} className="BG-img" alt="bg-img"/>
+      {/* <img src={map} className="BG-img" alt="bg-img"/> */}
       <PostBox/>
     </div>
   );
