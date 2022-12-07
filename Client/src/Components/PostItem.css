@@ -1,0 +1,19 @@
+.postbox {
+    width: 60%;
+    height: 85vh;
+    width: 70vw;
+    background-color: white;
+}
+
+.location {
+    text-align: start;
+}
+
+.img {
+    width: 30vw;
+}
+
+.local {
+    width: 15vw;
+    border-radius: 50%;
+}
