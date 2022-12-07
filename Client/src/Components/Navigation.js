@@ -9,7 +9,6 @@ import {
   Button,
 } from "react-bootstrap";
 import Login from "./Login";
-import eye2 from "../eye2.png";
 import { Link } from "react-router-dom";
 import {FaSearchDollar} from 'react-icons/fa'
 
@@ -20,7 +19,6 @@ const Navigation = () => {
         <Navbar.Brand as={Link} to="/">
           LocalEyes
         <FaSearchDollar/>
-          {/* <img src={eye2} className="App-logo2" alt="logo" /> */}
         </Navbar.Brand>
         <Form inline className=" d-flex">
           <FormControl
