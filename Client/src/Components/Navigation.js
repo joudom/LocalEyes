@@ -14,7 +14,7 @@ import {FaSearchDollar} from 'react-icons/fa'
 
 const Navigation = () => {
   return (
-    <Navbar bg="dark" variant={"dark"} expand="lg">
+    <Navbar sticky="top" bg="dark" variant={"dark"} expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">
           LocalEyes
