@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <div className="background" style={{ backgroundImage: `url(${background})` }}>
+    <div className="background img-fluid shadow-4" style={{ backgroundImage: `url(${background})` }}>
       <App />
     </div>
   </BrowserRouter>
