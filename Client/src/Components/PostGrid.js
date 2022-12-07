@@ -1,7 +1,9 @@
 import Card from "react-bootstrap/Card";
+import Container from 'react-bootstrap/Container';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useNavigate } from "react-router-dom";
+import './PostGrid.css'
 
 function PostGrid() {
   const navigate = useNavigate();
@@ -10,27 +12,28 @@ function PostGrid() {
     navigate('/item');
   }
 
+  const exampleimg 
+  = "https://media.istockphoto.com/id/1202959798/photo/macbook-pro-16-inch-with-touchbar-front-view.jpg?s=612x612&w=0&k=20&c=Uj7nnv5j_STbkW03MaXNKQtdUxiN5AQD9JF0Dw1i0WQ="
+
   return (
     <>
-      <div className="wrapper">
-        <Row xs={1} md={2} className="g-4">
-          {Array.from({ length: 18 }).map((_, idx) => (
-            <Col xs lg="2">
-              <Card onClick={navigateToItem} style={{ cursor: "pointer" }}>
-                <Card.Img variant="top" src="holder.js/100px160" />
+      <Container>
+        <Row className="g-2">
+          {Array.from({ length: 12 }).map((_, idx) => (
+            <Col lg="3">
+              <Card onClick={navigateToItem} style={{ cursor: "pointer" }} className="cards">
+                <Card.Img variant="top" src={exampleimg} />
                 <Card.Body>
-                  <Card.Title>Card title</Card.Title>
+                  <Card.Title>MacBook Pro</Card.Title>
                   <Card.Text>
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
+                    MacBooks for under 1k!
                   </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </Row>
-      </div>
+      </Container>
     </>
   );
 }
