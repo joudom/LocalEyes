@@ -1,17 +1,16 @@
 import React from 'react'
 import LeftFilter from './LeftFilter';
 import Navigation from './Navigation';
-import PostBox from './Postbox';
+import PostGrid from './PostGrid';
 
 const Home = () => {
   return (
       <div>
-          <Navigation />
+          <Navigation/>
           <div className="wrapper">
-          <LeftFilter />
-          <PostBox/>
+            <LeftFilter/>
+            <PostGrid/>
           </div>
-          
     </div>
   )
 }
