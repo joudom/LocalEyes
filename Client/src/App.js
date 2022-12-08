@@ -6,7 +6,6 @@ import Home from "./Components/Home";
 import Register from "./Components/Register";
 import Upload from "./Components/Upload";
 import PostItem from './Components/PostItem';
-import Footer from './Components/Footer';
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
         <Route path="upload"    element={<Upload/>}   />
         <Route path='item'      element={<PostItem/>} />
       </Routes>
-      <Footer/> 
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import LeftFilter from './LeftFilter';
 import Navigation from './Navigation';
 import PostGrid from './PostGrid';
+import Footer from './Footer';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
             <LeftFilter/>
             <PostGrid/>
           </div>
+          <Footer/>
     </div>
   )
 }
