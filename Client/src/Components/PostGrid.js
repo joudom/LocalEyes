@@ -18,10 +18,10 @@ function PostGrid() {
   return (
     <>
       <Container>
-        <Row className="g-2">
+        <Row className="g-2 cards">
           {Array.from({ length: 12 }).map((_, idx) => (
             <Col lg="3">
-              <Card onClick={navigateToItem} style={{ cursor: "pointer" }} className="cards">
+              <Card onClick={navigateToItem} style={{ cursor: "pointer" }}>
                 <Card.Img variant="top" src={exampleimg} />
                 <Card.Body>
                   <Card.Title>MacBook Pro</Card.Title>
