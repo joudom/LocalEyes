@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import Login from "./Login";
 import { Link } from "react-router-dom";
-import {FaSearchDollar} from 'react-icons/fa'
+import {FaSearchDollar, FaRegPlusSquare} from 'react-icons/fa'
 
 const Navigation = () => {
   return (
@@ -52,7 +52,7 @@ const Navigation = () => {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-
+            <Nav.Link as={Link} to="upload"><FaRegPlusSquare size={25}/></Nav.Link>
             <Login />
           </Nav>
         </Navbar.Collapse>
