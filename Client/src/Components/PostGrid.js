@@ -18,7 +18,14 @@ function PostGrid() {
   return (
     <>
       <Container>
-        <Row className="g-2 cards">
+      <div className='banner-text'>
+        <p>
+          whenever.<br/>
+          wherever.<br/>
+          shop like a local.
+        </p>
+        </div>
+        <Row className="g-4 cards">
           {Array.from({ length: 12 }).map((_, idx) => (
             <Col lg="3">
               <Card onClick={navigateToItem} style={{ cursor: "pointer" }}>
