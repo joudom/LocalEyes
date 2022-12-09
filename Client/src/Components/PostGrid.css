@@ -1,4 +1,15 @@
 .cards {
-    margin-top: 60vh;
+    margin-top: 93vh;
+    margin-bottom: 10vh;
     opacity: .9;
+}
+
+.banner-text {
+    margin-top: 39vh;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: xx-large;
+    text-shadow: 1px 1px 2px gray;
+    text-align: end;
 }
