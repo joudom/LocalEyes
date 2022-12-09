@@ -36,7 +36,7 @@ export const Uploader = ({onSuccess}) => {
   return (
     <>
       
-      <div className="upload-container w-50" >
+      <div className="upload-container " >
         <div className="uploadInfo " style={{
         display: 'flex',
         alignItems: 'center',
