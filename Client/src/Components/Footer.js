@@ -2,7 +2,7 @@ import React from "react";
 import {FaGithub, FaSearchDollar} from 'react-icons/fa'
 const Footer = () => {
   return (
-    <div className="footer">
+    <div className="footer" style={{height: "50vh"}}>
       <div>
         <div className="footer-content">
           <div className="footer-brand">
