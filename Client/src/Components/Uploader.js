@@ -1,14 +1,50 @@
-import { useState } from "react";
+import { useState,useCallback, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-
 import Button from "react-bootstrap/Button";
 import { Form, Col, Row } from "react-bootstrap";
-import {toast} from 'react-toastify'
+import { toast } from "react-toastify";
 
 
-export const Uploader = ({onSuccess}) => {
+export const Uploader = ({ onSuccess }) => {
+  const initialUserData = {
+    name: "",
+    store: "",
+    total: "",
+    description: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    photos: []
+  };
+  
   const [files, setFiles] = useState([]);
+  const [userData, setUserData] = useState(initialUserData)
+
+  const updateUserDataHandler = useCallback( (type) => (event) => {
+    setUserData({...userData, [type]: event.target.value}, [userData])
+  })
+
+  const formHandler = useCallback( (type ) => (event) => {
+    event.preventDefault()
+    console.log(userData);
+   
+    }, 
+    [userData]
+    
+  )
+  console.log(userData)
+
+
+  useEffect(() => {
+    setUserData({ 
+      ...userData, 
+      photos: files
+    })
+    console.log(userData)
+    }, [files])
+
 
   const onInputChange = (e) => {
     setFiles(e.target.files);
@@ -16,6 +52,11 @@ export const Uploader = ({onSuccess}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
 
     const data = new FormData();
     for (let i = 0; i < files.length; i++) {
@@ -25,38 +66,51 @@ export const Uploader = ({onSuccess}) => {
     axios
       .post("//localhost:8000/upload", data)
       .then((response) => {
-        toast.success("Upload Successful")
-        onSuccess(response.data)
+        toast.success("Upload Successful");
+        onSuccess(response.data);
       })
       .catch((e) => {
-        toast.error("Upload Error")
+        toast.error("Upload Error");
       });
   };
 
   return (
     <>
-      
-      <div className="upload-container " >
-        <div className="uploadInfo " style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-       
-      }}>
-          <Form>
+      <div className="upload-container ">
+        <div
+          className="uploadInfo "
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Form method="post" action="#" id="#" onSubmit={formHandler()}>
+            <Form.Group className="mb-3" controlId="formGridAddress1">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                placeholder="Macbook Pro 2016, GoPro Hero 9, etc.."
+                onChange={updateUserDataHandler("name")}
+                required
+              />
+            </Form.Group>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Store</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Macbook Pro 2016, GoPro Hero 9, etc.."
-                  required
-                />
+                  placeholder="Best Buy"
+                  onChange={updateUserDataHandler("store")}
+                  required />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridPassword">
                 <Form.Label>Total</Form.Label>
-                <Form.Control type="value" placeholder="$25.00" required/>
+                <Form.Control
+                  type="value"
+                  placeholder="$25.00"
+                  onChange={updateUserDataHandler("total")}
+                  required />
               </Form.Group>
             </Row>
 
@@ -65,17 +119,26 @@ export const Uploader = ({onSuccess}) => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={3} required/>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                onChange={updateUserDataHandler("description")}
+                required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGridAddress1">
               <Form.Label>Address</Form.Label>
-              <Form.Control placeholder="1234 Main St" required/>
+              <Form.Control
+                placeholder="1234 Main St"
+                onChange={updateUserDataHandler("address")}
+                required />
             </Form.Group>
 
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridCity">
                 <Form.Label>City</Form.Label>
-                <Form.Control required/>
+                <Form.Control
+                  onChange={updateUserDataHandler("city")}
+                  required />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridState">
@@ -88,7 +151,9 @@ export const Uploader = ({onSuccess}) => {
 
               <Form.Group as={Col} controlId="formGridZip">
                 <Form.Label>Zip</Form.Label>
-                <Form.Control required/>
+                <Form.Control
+                  onChange={updateUserDataHandler("zip")}
+                  required />
               </Form.Group>
             </Row>
           </Form>
@@ -111,9 +176,7 @@ export const Uploader = ({onSuccess}) => {
             </Button>
           </form>
         </div>
-          </div>
-      
+      </div>
     </>
   );
 };
-
