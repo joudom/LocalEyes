@@ -1,9 +1,9 @@
 import React from 'react'
-import Nav from 'react-bootstrap/Nav';
+// import Nav from 'react-bootstrap/Nav';
 import {
   CDBSidebar,
   CDBSidebarContent,
-  CDBSidebarFooter,
+  // CDBSidebarFooter,
   CDBSidebarHeader,
   CDBSidebarMenu,
   CDBSidebarMenuItem,
@@ -13,7 +13,7 @@ import { NavLink } from 'react-router-dom';
 const LeftFilter = () => {
   return (
 
-    <div style={{ display: 'flex', height: '50vh', top: '7vh', position: '-webkit-sticky', position: 'sticky' }}>
+    <div style={{ display: 'flex', height: '50vh', top: '7vh', position: 'sticky' }}>
       <CDBSidebar textColor="white" backgroundColor="gray" toggled="false">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>Filters</a>
