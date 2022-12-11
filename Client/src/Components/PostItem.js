@@ -40,20 +40,19 @@ const PostItem = ({item, setItem}) => {
             </div>
           </Col>
         </Row>
-          <br/>
-        <Row style={{height: "39.2vh"}}>
-          <Col xxl className='text border'>
+        <Row style={{height: "48.5vh"}}>
+          <Col xxl={4} className='text border'>
             Item Description<br/><br/>
             The new MacBook Pro delivers game-changing performance for pro users. 
             With the powerful M1 Pro to supercharge pro-level workflows while getting amazing battery life.
             And with an immersive 14-inch Liquid Retina XDR display and an array of pro ports, you can do more than ever with MacBook Pro.
           </Col>
-          <Col xxl className='text border'>
+          <Col xxl={5} className='text border'>
             Local Deal Description<br/><br/>
             They have brand new MacBooks for the low out here!
             Manager says they have to sell everything to close Q4 on a strong note.
           </Col>
-          <Col xxl className='text border'>
+          <Col xxl={3} className='text border'>
             Local:<br/>
             Leo D.<br/>
             <img src="https://images.t3n.de/news/wp-content/uploads/2022/05/Leonardo-DiCaprio-Meme.png?class=structuredData-small" className='local' alt="..."/>
