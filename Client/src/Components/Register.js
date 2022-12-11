@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Navigation from './Navigation';
+import Footer from './Footer';
 
 function Register() {
   return (
@@ -59,6 +60,7 @@ function Register() {
         Submit
       </Button>
       </Form>
+      <Footer />
       </>
   );
 }

@@ -4,7 +4,6 @@ import Home from "./Components/Home";
 import Register from "./Components/Register";
 import PostItem from './Components/PostItem';
 import UploadPage from "./Components/UploadPage";
-
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 

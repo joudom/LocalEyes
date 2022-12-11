@@ -1,14 +1,11 @@
-import React from "react";
+import { React, useEffect } from "react";
 import Navigation from "./Navigation";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Footer from "./Footer";
 import './PostItem.css';
-import {useEffect} from 'react';
 
-//need to use useparams again here
-//make changes from doc travis sent, 'dynamic routing'
 
 const PostItem = ({item, setItem}) => {
   return (
@@ -25,12 +22,12 @@ const PostItem = ({item, setItem}) => {
           <Col xxl={4} className='border'>
             <div className="text">
                 Pricing / Location / Status<br/>
-                  <h1>$750.00</h1>
+                  <h1>${item.total}</h1>
                 Posted: 12/06/2022<br/>
                 Ends: 12/09/2022<br/><br/>
               <div className="text location">
-                STORE: Best Buy<br/>
-                ADDRESS: 1234 Shopping Blvd Atlanta, GA 30313
+                STORE: {item.store}<br/>
+                ADDRESS: {item.address},{item.city},{item.state},{item.zip}              
               </div>
                 <br/>
               <div>
@@ -42,16 +39,14 @@ const PostItem = ({item, setItem}) => {
         </Row>
         <Row style={{height: "48.5vh"}}>
           <Col xxl={4} className='text border'>
-            Item Description<br/><br/>
-            The new MacBook Pro delivers game-changing performance for pro users. 
-            With the powerful M1 Pro to supercharge pro-level workflows while getting amazing battery life.
-            And with an immersive 14-inch Liquid Retina XDR display and an array of pro ports, you can do more than ever with MacBook Pro.
+            Item Description<br/>
+            {item.description}
           </Col>
-          <Col xxl={5} className='text border'>
+          {/* <Col xxl={5} className='text border'>
             Local Deal Description<br/><br/>
             They have brand new MacBooks for the low out here!
             Manager says they have to sell everything to close Q4 on a strong note.
-          </Col>
+          </Col> */}
           <Col xxl={3} className='text border'>
             Local:<br/>
             Leo D.<br/>

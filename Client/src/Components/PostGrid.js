@@ -31,6 +31,9 @@ function PostGrid({posts, setItem}) {
                   <Card.Body>
                     <Card.Title>{item.item_name}</Card.Title>
                     <Card.Text>
+                      ${item.total}
+                    </Card.Text>
+                    <Card.Text>
                       {item.description}
                     </Card.Text>
                   </Card.Body>
