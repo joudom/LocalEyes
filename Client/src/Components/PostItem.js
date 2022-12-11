@@ -4,9 +4,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Footer from "./Footer";
-import './PostItem.css'
+import './PostItem.css';
+import {useEffect} from 'react';
 
-const PostItem = () => {
+//need to use useparams again here
+//make changes from doc travis sent, 'dynamic routing'
+
+const PostItem = ({item, setItem}) => {
   return (
     <>
     <Navigation />

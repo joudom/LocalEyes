@@ -19,14 +19,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }).array("file")
 
 //ROUTES
-// app.post('/users', db.createUser)
-// app.get('/', db.getPosts)
-app.get('/item', db.getItem)
-// app.put('/users/:id', db.updateItem)
-// app.delete('/users/:id', db.deleteItem)
-// app.post('/', db.createItem)
+app.post('/register', db.createUser)
+app.get('/', db.getPosts)
+app.get('/item/:id', db.getItem)
+app.put('/update', db.updateItem)
+app.delete('/delete', db.deleteItem)
+app.post('/create', db.createItem)
 // app.get('/', db.getFavorites)
-
+   
 
 app.post("/upload", (req, res) => {
     upload(req, res, (err) => {
