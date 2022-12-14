@@ -6,6 +6,8 @@ const app = express()
 app.use(cors())
 app.use(express.static('public'))
 const db = require('./queries')
+app.use(express.json());
+app.use(express.urlencoded());
 
 
 const storage = multer.diskStorage({
@@ -21,11 +23,11 @@ const upload = multer({ storage }).array("file")
 
 //ROUTES
 app.post('/register', db.createUser)
-app.get('/', db.getPosts)
-app.get('/item/:id', db.getItem)
-app.put('/update', db.updateItem)
-app.delete('/delete', db.deleteItem)
-app.post('/create', db.createItem)
+app.get('/', db.getPosts) //done
+app.get('/item/:id', db.getItem) //done
+app.put('/upload', db.updateItem)
+app.delete('/upload', db.deleteItem)
+app.post('/upload', db.createItem)
 // app.get('/', db.getFavorites)
    
 

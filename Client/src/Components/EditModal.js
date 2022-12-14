@@ -3,53 +3,47 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-const Login = () => {
+function EditModal({item, setItem}) {
   const [show, setShow] = useState(false);
-  
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
     <>
-      <Button variant="secondary" onClick={() => setShow(true)}>
-        Sign in
+      <Button variant="primary" onClick={handleShow}>
+        Edit
       </Button>
-      <Modal 
-        show={show} 
-        onHide={handleClose}
-        backdrop="static"
-        >
-        
+
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Sign in</Modal.Title>
+          <Modal.Title>Edit your post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Username/Email address</Form.Label>
+              <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="name@example.com"
                 autoFocus
               />
             </Form.Group>
-            
-            <Form.Group className="mb-3" controlId="exampleForm.ControlPassword1">
-              <Form.Label>Password</Form.Label>
-              <Form.Control 
-                type="password" 
-              />
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Example textarea</Form.Label>
+              <Form.Control as="textarea" rows={3} />
             </Form.Group>
-            
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Cancel
+            Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Sign in
+            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
@@ -57,4 +51,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default EditModal;

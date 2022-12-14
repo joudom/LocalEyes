@@ -3,7 +3,9 @@ import Navigation from "./Navigation";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import Footer from "./Footer";
+import EditModal from './EditModal'
 import './PostItem.css';
 
 
@@ -51,6 +53,8 @@ const PostItem = ({item, setItem}) => {
             Local:<br/>
             Leo D.<br/>
             <img src="https://images.t3n.de/news/wp-content/uploads/2022/05/Leonardo-DiCaprio-Meme.png?class=structuredData-small" className='local' alt="..."/>
+            <EditModal />
+            <Button variant="danger">Delete</Button>
           </Col>
         </Row>
       </Container>

@@ -62,15 +62,16 @@ const createUser = (req, res) => {
     })
   }
 
-  const createItem = (req, res) => {
-    const { name, store, total, description, address, city, state, zip, images } = req.body
-    pool.query('INSERT INTO posts (name, store, total, description, address, city, state, zip, images) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', 
-                [name, store, total, description, address, city, state, zip, images], (error, results) => {
-      if (error) {
-        throw error
-      }
-      res.status(201).send(`Post added with ID: ${results.rows[0].id}`)
-    })
+  const createItem = async (req, res) => {
+    try{
+      console.log(req.body)
+      const { item_name, store, total, user_link, description, address, city, state, zip, images } = req.body
+      const newUser = await pool.query('INSERT INTO posts (item_name, store, total, user_link, description, address, city, state, zip, images) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *', 
+                [item_name, store, total, user_link, description, address, city, state, zip, images])
+      res.json(newUser)  
+      }catch (err) {
+        console.log(err)
+    }
   }
 
   module.exports = {

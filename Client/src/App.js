@@ -31,7 +31,7 @@ console.log('items:', item)
       <Routes>
         <Route path="/"         element={<Home posts={posts} setPosts={setPosts} setItem={setItem}/>}/>
         <Route path="register"  element={<Register/>} />
-        <Route path="upload"    element={<UploadPage/>}   />
+        <Route path="upload"    element={<UploadPage posts={posts} setPosts={setPosts} />}   />
         <Route path='item/:id'  element={<PostItem item={item} setItem={setItem}/>}/>
       </Routes>
 

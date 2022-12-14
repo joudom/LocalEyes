@@ -4,12 +4,13 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import axios from 'axios';
 
 function Register() {
   return (
     <>
    <Navigation/>
-    <Form>
+    <Form method='post'>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>

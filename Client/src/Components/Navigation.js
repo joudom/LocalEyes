@@ -8,9 +8,9 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import Login from "./Login";
 import { Link } from "react-router-dom";
 import {FaSearchDollar, FaRegPlusSquare} from 'react-icons/fa'
+import Login from "./Login";
 
 const Navigation = () => {
   return (

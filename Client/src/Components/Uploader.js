@@ -1,4 +1,4 @@
-import { useState,useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import Button from "react-bootstrap/Button";
@@ -6,7 +6,7 @@ import { Form, Col, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 
-export const Uploader = ({ onSuccess }) => {
+const Uploader = ({ onSuccess }) => {
   const initialUserData = {
     name: "",
     store: "",
@@ -62,9 +62,16 @@ export const Uploader = ({ onSuccess }) => {
     for (let i = 0; i < files.length; i++) {
       data.append("file", files[i]);
     }
+    data.append('inputData', userData)
+
+    console.log(data)
 
     axios
-      .post("//localhost:8000/upload", data)
+      .post("//localhost:8000/upload", userData, {
+        // headers: {
+        //   'Content-Type': 'multipart/form-data'
+        // }
+      })
       .then((response) => {
         toast.success("Upload Successful");
         onSuccess(response.data);
@@ -180,3 +187,5 @@ export const Uploader = ({ onSuccess }) => {
     </>
   );
 };
+
+export default Uploader;
