@@ -1,12 +1,12 @@
-import { useState,useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { Form, Col, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
+import { StateList } from "./StateList";
 
-
-export const Uploader = ({ onSuccess }) => {
+export const Uploader = ({ onSuccess, StateList }) => {
   const initialUserData = {
     name: "",
     store: "",
@@ -16,35 +16,32 @@ export const Uploader = ({ onSuccess }) => {
     city: "",
     state: "",
     zip: "",
-    photos: []
+    photos: [],
   };
-  
+
   const [files, setFiles] = useState([]);
-  const [userData, setUserData] = useState(initialUserData)
+  const [userData, setUserData] = useState(initialUserData);
+  const [state, setState] = useState();
+  const updateUserDataHandler = useCallback((type) => (event) => {
+    setUserData({ ...userData, [type]: event.target.value }, [userData]);
+  });
 
-  const updateUserDataHandler = useCallback( (type) => (event) => {
-    setUserData({...userData, [type]: event.target.value}, [userData])
-  })
-
-  const formHandler = useCallback( (type ) => (event) => {
-    event.preventDefault()
-    console.log(userData);
-   
-    }, 
+  const formHandler = useCallback(
+    (type) => (event) => {
+      event.preventDefault();
+      console.log(userData);
+    },
     [userData]
-    
-  )
-  console.log(userData)
-
+  );
+  console.log(userData);
 
   useEffect(() => {
-    setUserData({ 
-      ...userData, 
-      photos: files
-    })
-    console.log(userData)
-    }, [files])
-
+    setUserData({
+      ...userData,
+      photos: files,
+    });
+    console.log(userData);
+  }, [files]);
 
   const onInputChange = (e) => {
     setFiles(e.target.files);
@@ -101,7 +98,8 @@ export const Uploader = ({ onSuccess }) => {
                   type="email"
                   placeholder="Best Buy"
                   onChange={updateUserDataHandler("store")}
-                  required />
+                  required
+                />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridPassword">
@@ -110,7 +108,8 @@ export const Uploader = ({ onSuccess }) => {
                   type="value"
                   placeholder="$25.00"
                   onChange={updateUserDataHandler("total")}
-                  required />
+                  required
+                />
               </Form.Group>
             </Row>
 
@@ -123,14 +122,16 @@ export const Uploader = ({ onSuccess }) => {
                 as="textarea"
                 rows={3}
                 onChange={updateUserDataHandler("description")}
-                required />
+                required
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGridAddress1">
               <Form.Label>Address</Form.Label>
               <Form.Control
                 placeholder="1234 Main St"
                 onChange={updateUserDataHandler("address")}
-                required />
+                required
+              />
             </Form.Group>
 
             <Row className="mb-3">
@@ -138,14 +139,66 @@ export const Uploader = ({ onSuccess }) => {
                 <Form.Label>City</Form.Label>
                 <Form.Control
                   onChange={updateUserDataHandler("city")}
-                  required />
+                  required
+                />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label>State</Form.Label>
-                <Form.Select defaultValue="Choose...">
+                <Form.Select
+                  defaultValue="Choose..."
+                  onChange={updateUserDataHandler("state")}
+                >
                   <option>Choose...</option>
-                  <option>...</option>
+                  <option>AL</option>
+                  <option>AK</option>
+                  <option>AZ</option>
+                  <option>AR</option>
+                  <option>CA</option>
+                  <option>CO</option>
+                  <option>CT</option>
+                  <option>DE</option>
+                  <option>DC</option>
+                  <option>FL</option>
+                  <option>GA</option>
+                  <option>FL</option>
+                  <option>HI</option>
+                  <option>ID</option>
+                  <option>IL</option>
+                  <option>IN</option>
+                  <option>IA</option>
+                  <option>KS</option>
+                  <option>KY</option>
+                  <option>LA</option>
+                  <option>ME</option>
+                  <option>MD</option>
+                  <option>MA</option>
+                  <option>MI</option>
+                  <option>MN</option>
+                  <option>MS</option>
+                  <option>MO</option>
+                  <option>MT</option>
+                  <option>NE</option>
+                  <option>NV</option>
+                  <option>NH</option>
+                  <option>NJ</option>
+                  <option>NM</option>
+                  <option>NC</option>
+                  <option>OH</option>
+                  <option>OR</option>
+                  <option>PA</option>
+                  <option>RI</option>
+                  <option>SC</option>
+                  <option>SD</option>
+                  <option>TN</option>
+                  <option>TX</option>
+                  <option>UT</option>
+                  <option>VT</option>
+                  <option>VA</option>
+                  <option>WA</option>
+                  <option>WV</option>
+                  <option>WI</option>
+                  <option>WY</option>
                 </Form.Select>
               </Form.Group>
 
@@ -153,7 +206,8 @@ export const Uploader = ({ onSuccess }) => {
                 <Form.Label>Zip</Form.Label>
                 <Form.Control
                   onChange={updateUserDataHandler("zip")}
-                  required />
+                  required
+                />
               </Form.Group>
             </Row>
           </Form>
