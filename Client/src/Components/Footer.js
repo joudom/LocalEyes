@@ -1,5 +1,6 @@
 import React from "react";
 import {FaGithub, FaSearchDollar} from 'react-icons/fa'
+
 const Footer = () => {
   return (
     <div
@@ -15,8 +16,8 @@ const Footer = () => {
                 fontSize: "2em",
               }}
             >
-                          LocalEyes
-                          <FaSearchDollar/>
+              LocalEyes
+              <FaSearchDollar/>
             </h3>
           </div>
           <p>
@@ -31,7 +32,7 @@ const Footer = () => {
             </div>
             <div>
               <b>For Deal Seekers</b>
-              <p>Code of conduct</p>
+              <p>Code of Conduct</p>
               <p>Community</p>
             </div>
             <div>
@@ -42,7 +43,7 @@ const Footer = () => {
             </div>
             <div>
               <b>Social links</b>
-                          <div>< FaGithub/></div>
+                <div>< FaGithub/></div>
               <div></div>
             </div>
           </div>
