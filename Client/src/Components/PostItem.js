@@ -12,19 +12,18 @@ const PostItem = () => {
   const city = encodeURIComponent('Atlanta');
   const state = encodeURIComponent('GA');
   const zip = encodeURIComponent('30324');
-
-  const isLoaded = true;
+  const url = 
+  `https://maps.googleapis.com/maps/api/staticmap?center=${stAddress}%20${city}%20${state}%20${zip}&zoom=17&scale=2&size=480x410&maptype=roadmap&format=jpg&key=${staticKey}&markers=size:mid%7Ccolor:0xf13709%7Clabel:%7C${stAddress}%20${city}%20${state}%20${zip}`
 
   return (
     <>
-    <Navigation />
+      <Navigation />
       <Container className="postbox">
         <Row className="h-50">
           <Col xxl={8} className='text border'>
             Image Carousel<br/>
             <img src
-            ="https://media.istockphoto.com/id/1202959798/photo/macbook-pro-16-inch-with-touchbar-front-view.jpg
-              ?s=612x612&w=0&k=20&c=Uj7nnv5j_STbkW03MaXNKQtdUxiN5AQD9JF0Dw1i0WQ="className="img" alt="..."/>
+            ="https://www.cnet.com/a/img/resize/cf15df883a6cdfd994c1451e9b2698f859ed4c3a/hub/2017/06/06/349b7e65-a855-44f0-ae0a-6610ebca0809/apple-macbook-pro-12-inch-2017-4181.jpg?auto=webp&width=768"className="img" alt="..."/>
           </Col>
           <Col xxl={4} className='border'>
             <div className="text">
@@ -48,16 +47,12 @@ const PostItem = () => {
             With the powerful M1 Pro to supercharge pro-level workflows while getting amazing battery life.
             And with an immersive 14-inch Liquid Retina XDR display and an array of pro ports, you can do more than ever with MacBook Pro.
           </Col>
-
-          {isLoaded && (
           <Col xxl={5} className='text border'>
             <img 
               width="95%" 
-              src={`https://maps.googleapis.com/maps/api/staticmap?center=${stAddress}%20${city}%20${state}%20${zip}&zoom=17&scale=2&size=500x400&maptype=roadmap&format=jpg&key=${staticKey}&markers=size:mid%7Ccolor:0xf13709%7Clabel:%7C${stAddress}%20${city}%20${state}%20${zip}`}
+              src={url}
               alt="Google Map Image" />
           </Col>
-          )}
-
           <Col xxl={3} className='text border'>
             Local:<br/>
             Leo D.<br/>
@@ -68,6 +63,6 @@ const PostItem = () => {
       <Footer/> 
     </>
   );
-};
+}
 
 export default PostItem;
