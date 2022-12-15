@@ -27,6 +27,7 @@ const Uploader = ({ onSuccess }) => {
   })
 
   const formHandler = useCallback( (type ) => (event) => {
+    console.log('inside formhandler')
     event.preventDefault()
     console.log(userData);
    
@@ -34,7 +35,7 @@ const Uploader = ({ onSuccess }) => {
     [userData]
     
   )
-  console.log(userData)
+  // console.log(userData)
 
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const Uploader = ({ onSuccess }) => {
       ...userData, 
       photos: files
     })
-    console.log(userData)
+    // console.log(userData)
     }, [files])
 
 
@@ -64,7 +65,7 @@ const Uploader = ({ onSuccess }) => {
     }
     data.append('inputData', userData)
 
-    console.log(data)
+    // console.log(data)
 
     axios
       .post("//localhost:8000/upload", userData, {

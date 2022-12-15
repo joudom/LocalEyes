@@ -9,7 +9,10 @@ import EditModal from './EditModal'
 import './PostItem.css';
 
 
-const PostItem = ({item, setItem}) => {
+const PostItem = ({item, setItem, setShouldReload}) => {
+  
+  console.log('item in postitem', item)
+
   return (
     <>
     <Navigation />
@@ -53,7 +56,7 @@ const PostItem = ({item, setItem}) => {
             Local:<br/>
             Leo D.<br/>
             <img src="https://images.t3n.de/news/wp-content/uploads/2022/05/Leonardo-DiCaprio-Meme.png?class=structuredData-small" className='local' alt="..."/>
-            <EditModal />
+            <EditModal item={item} setItem={setItem} setShouldReload={setShouldReload}/>
             <Button variant="danger">Delete</Button>
           </Col>
         </Row>

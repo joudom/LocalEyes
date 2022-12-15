@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [posts, setPosts] = useState([]);
   const [item, setItem] = useState({});
+  const [shouldReload, setShouldReload] = useState(false);
   let { id } = useParams();
 
   useEffect(() => {
@@ -19,11 +20,14 @@ function App() {
         if(res.ok) {return res.json()}
         throw res 
       })
-      .then(data => setPosts(data))
-}, [])
+      .then(data => { 
+          setPosts(data)
+          setShouldReload(false) 
+        })
+}, [shouldReload])
 
-console.log('posts:', posts)
-console.log('items:', item)
+// console.log('posts:', posts)
+console.log('item:', item)
 
   return (
     <>
@@ -32,7 +36,7 @@ console.log('items:', item)
         <Route path="/"         element={<Home posts={posts} setPosts={setPosts} setItem={setItem}/>}/>
         <Route path="register"  element={<Register/>} />
         <Route path="upload"    element={<UploadPage posts={posts} setPosts={setPosts} />}   />
-        <Route path='item/:id'  element={<PostItem item={item} setItem={setItem}/>}/>
+        <Route path='item/:id'  element={<PostItem item={item} setItem={setItem} setShouldReload={setShouldReload}/>}/>
       </Routes>
 
     </div>

@@ -39,10 +39,10 @@ const createUser = (req, res) => {
 
   const updateItem = (req, res) => {
     const id = parseInt(req.params.id)
-    const { name, store, total, description, address, city, state, zip, images } = req.body
+    const { item_name, store, total, description, address, city, state, zip, images } = req.body
     pool.query(
-      'UPDATE posts SET name = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9 WHERE id = $10',
-      [name, store, total, description, address, city, state, zip, images, id],
+      'UPDATE posts SET item_name = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9 WHERE id = $10',
+      [item_name, store, total, description, address, city, state, zip, images, id],
       (error, results) => {
         if (error) {
           throw error
