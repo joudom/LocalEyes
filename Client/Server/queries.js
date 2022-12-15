@@ -39,10 +39,10 @@ const createUser = (req, res) => {
 
   const updateItem = (req, res) => {
     const id = parseInt(req.params.id)
-    const { item_name, store, total, description, address, city, state, zip, images } = req.body
+    const { item_name, store, total, description, address, city, state, zip, images, category } = req.body
     pool.query(
-      'UPDATE posts SET item_name = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9 WHERE id = $10',
-      [item_name, store, total, description, address, city, state, zip, images, id],
+      'UPDATE posts SET item_name = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9, category = $10 WHERE id = $11',
+      [item_name, store, total, description, address, city, state, zip, images, category, id],
       (error, results) => {
         if (error) {
           throw error
@@ -65,9 +65,9 @@ const createUser = (req, res) => {
   const createItem = async (req, res) => {
     try{
       console.log(req.body)
-      const { item_name, store, total, user_link, description, address, city, state, zip, images } = req.body
-      const newUser = await pool.query('INSERT INTO posts (item_name, store, total, user_link, description, address, city, state, zip, images) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *', 
-                [item_name, store, total, user_link, description, address, city, state, zip, images])
+      const { item_name, store, total, user_link, description, address, city, state, zip, images, category } = req.body
+      const newUser = await pool.query('INSERT INTO posts (item_name, store, total, user_link, description, address, city, state, zip, images, category) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *', 
+                [item_name, store, total, user_link, description, address, city, state, zip, images, category])
       res.json(newUser)  
       }catch (err) {
         console.log(err)

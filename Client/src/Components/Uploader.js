@@ -4,9 +4,9 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import { Form, Col, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
+import { StateList } from "./StateList";
 
-
-const Uploader = ({ onSuccess }) => {
+const Uploader = ({ onSuccess, StateList }) => {
   const initialUserData = {
     name: "",
     store: "",
@@ -16,11 +16,13 @@ const Uploader = ({ onSuccess }) => {
     city: "",
     state: "",
     zip: "",
-    photos: []
+    photos: [],
+    category: ""
   };
-  
+
   const [files, setFiles] = useState([]);
-  const [userData, setUserData] = useState(initialUserData)
+  const [userData, setUserData] = useState(initialUserData);
+  const [state, setState] = useState();
 
   const updateUserDataHandler = useCallback( (type) => (event) => {
     setUserData({...userData, [type]: event.target.value}, [userData])
@@ -94,14 +96,29 @@ const Uploader = ({ onSuccess }) => {
           }}
         >
           <Form method="post" action="#" id="#" onSubmit={formHandler()}>
-            <Form.Group className="mb-3" controlId="formGridAddress1">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                placeholder="Macbook Pro 2016, GoPro Hero 9, etc.."
-                onChange={updateUserDataHandler("name")}
-                required
-              />
-            </Form.Group>
+          <Row className="mb-3">
+              <Form.Group as={Col} controlId="formGridAddress1">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  placeholder="Macbook Pro 2016, GoPro Hero 9, etc.."
+                  onChange={updateUserDataHandler("name")}
+                  required
+                />
+              </Form.Group>
+              <Form.Group as={Col} controlId="formGridState">
+                <Form.Label>Category</Form.Label>
+                <Form.Select
+                  defaultValue="Category"
+                  onChange={updateUserDataHandler("category")}
+                >
+                  <option>Choose Category...</option>
+                  <option value="clothing">Clothing</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="food">Food</option>
+                  <option value="general">General</option>
+                </Form.Select>
+              </Form.Group>
+            </Row>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>Store</Form.Label>
@@ -109,7 +126,8 @@ const Uploader = ({ onSuccess }) => {
                   type="email"
                   placeholder="Best Buy"
                   onChange={updateUserDataHandler("store")}
-                  required />
+                  required
+                />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridPassword">
@@ -118,7 +136,8 @@ const Uploader = ({ onSuccess }) => {
                   type="value"
                   placeholder="$25.00"
                   onChange={updateUserDataHandler("total")}
-                  required />
+                  required
+                />
               </Form.Group>
             </Row>
 
@@ -131,14 +150,16 @@ const Uploader = ({ onSuccess }) => {
                 as="textarea"
                 rows={3}
                 onChange={updateUserDataHandler("description")}
-                required />
+                required
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGridAddress1">
               <Form.Label>Address</Form.Label>
               <Form.Control
                 placeholder="1234 Main St"
                 onChange={updateUserDataHandler("address")}
-                required />
+                required
+              />
             </Form.Group>
 
             <Row className="mb-3">
@@ -146,14 +167,66 @@ const Uploader = ({ onSuccess }) => {
                 <Form.Label>City</Form.Label>
                 <Form.Control
                   onChange={updateUserDataHandler("city")}
-                  required />
+                  required
+                />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label>State</Form.Label>
-                <Form.Select defaultValue="Choose...">
+                <Form.Select
+                  defaultValue="Choose..."
+                  onChange={updateUserDataHandler("state")}
+                >
                   <option>Choose...</option>
-                  <option>...</option>
+                  <option>AL</option>
+                  <option>AK</option>
+                  <option>AZ</option>
+                  <option>AR</option>
+                  <option>CA</option>
+                  <option>CO</option>
+                  <option>CT</option>
+                  <option>DE</option>
+                  <option>DC</option>
+                  <option>FL</option>
+                  <option>GA</option>
+                  <option>FL</option>
+                  <option>HI</option>
+                  <option>ID</option>
+                  <option>IL</option>
+                  <option>IN</option>
+                  <option>IA</option>
+                  <option>KS</option>
+                  <option>KY</option>
+                  <option>LA</option>
+                  <option>ME</option>
+                  <option>MD</option>
+                  <option>MA</option>
+                  <option>MI</option>
+                  <option>MN</option>
+                  <option>MS</option>
+                  <option>MO</option>
+                  <option>MT</option>
+                  <option>NE</option>
+                  <option>NV</option>
+                  <option>NH</option>
+                  <option>NJ</option>
+                  <option>NM</option>
+                  <option>NC</option>
+                  <option>OH</option>
+                  <option>OR</option>
+                  <option>PA</option>
+                  <option>RI</option>
+                  <option>SC</option>
+                  <option>SD</option>
+                  <option>TN</option>
+                  <option>TX</option>
+                  <option>UT</option>
+                  <option>VT</option>
+                  <option>VA</option>
+                  <option>WA</option>
+                  <option>WV</option>
+                  <option>WI</option>
+                  <option>WY</option>
                 </Form.Select>
               </Form.Group>
 
@@ -161,7 +234,8 @@ const Uploader = ({ onSuccess }) => {
                 <Form.Label>Zip</Form.Label>
                 <Form.Control
                   onChange={updateUserDataHandler("zip")}
-                  required />
+                  required
+                />
               </Form.Group>
             </Row>
           </Form>
