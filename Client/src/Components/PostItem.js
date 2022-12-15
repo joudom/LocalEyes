@@ -1,12 +1,18 @@
-import React from 'react';
+import { React, useEffect } from "react";
 import Navigation from "./Navigation";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import Footer from "./Footer";
-import './PostItem.css'
+import EditModal from './EditModal'
+import './PostItem.css';
 
-const PostItem = () => {
+
+const PostItem = ({item, setItem, setShouldReload}) => {
+  
+  console.log('item in postitem', item)
+
   const staticKey = process.env.REACT_APP_GOOGLE_MAPS_STATIC_API_KEY;
   const stAddress = encodeURIComponent('2537 Piedmont Rd NE');
   const city = encodeURIComponent('Atlanta');
@@ -28,24 +34,25 @@ const PostItem = () => {
           <Col xxl={4} className='border'>
             <div className="text">
                 Pricing / Location / Status<br/>
-                  <h1>$750.00</h1>
+                  <h1>${item.total}</h1>
                 Posted: 12/06/2022<br/>
                 Ends: 12/09/2022<br/><br/>
               <div className="text location">
-                STORE:    <br/>Best Buy <br/><br/>
-                ADDRESS:  <br/> 2537 Piedmont Rd NE Atlanta, GA 30324 <br/><br/>
-                DEAL:     <br/>They have brand new MacBooks for the low out here!
-                              Manager says they have to sell everything to close Q4 on a strong note.
+                STORE: {item.store}<br/>
+                ADDRESS: {item.address},{item.city},{item.state},{item.zip}              
+              </div>
+                <br/>
+              <div>
+                Is this still on sale?<br/><br/>
+                <button>YES</button> <button>NO</button>
               </div>
             </div>
           </Col>
         </Row>
         <Row style={{height: "48.5vh"}}>
           <Col xxl={4} className='text border'>
-            Item Description<br/><br/>
-            The new MacBook Pro delivers game-changing performance for pro users. 
-            With the powerful M1 Pro to supercharge pro-level workflows while getting amazing battery life.
-            And with an immersive 14-inch Liquid Retina XDR display and an array of pro ports, you can do more than ever with MacBook Pro.
+            Item Description<br/>
+            {item.description}
           </Col>
           <Col xxl={5} className='text border'>
             <img 
@@ -57,6 +64,8 @@ const PostItem = () => {
             Local:<br/>
             Leo D.<br/>
             <img src="https://images.t3n.de/news/wp-content/uploads/2022/05/Leonardo-DiCaprio-Meme.png?class=structuredData-small" className='local' alt="..."/>
+            <EditModal item={item} setItem={setItem} setShouldReload={setShouldReload}/>
+            <Button variant="danger">Delete</Button>
           </Col>
         </Row>
       </Container>

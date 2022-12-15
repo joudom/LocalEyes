@@ -2,13 +2,15 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Navigation from './Navigation';
-import Footer from "./Footer";
+import Footer from './Footer';
+import axios from 'axios';
 
 function Register() {
   return (
     <>
    <Navigation/>
-    <Form
+    <Form 
+      method='post'
       style={{
         display: "flex", alignItems: "center", justifyContent: "center", marginTop: "5vh", 
         marginBottom: "5vh", marginLeft: "25%", height: "70vh", backgroundColor: "whitesmoke", 

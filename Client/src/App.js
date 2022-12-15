@@ -1,13 +1,12 @@
-
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Components/Home";
 import Register from "./Components/Register";
 import PostItem from './Components/PostItem';
 import UploadPage from "./Components/UploadPage";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import { L36, L57, L74, L96  } from "react-isloading";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /*
 L36 yellowbook
@@ -26,6 +25,26 @@ function App() {
     }, 5000)
   }, [])
 
+  const [posts, setPosts] = useState([]);
+  const [item, setItem] = useState({});
+  const [shouldReload, setShouldReload] = useState(false);
+  let { id } = useParams();
+
+  useEffect(() => {
+    fetch('http://localhost:8000')
+      .then(res => {
+        if(res.ok) {return res.json()}
+        throw res 
+      })
+      .then(data => { 
+          setPosts(data)
+          setShouldReload(false) 
+        })
+}, [shouldReload])
+
+// console.log('posts:', posts)
+console.log('item:', item)
+
   return (
     <>
       {
@@ -34,10 +53,10 @@ function App() {
           :
           <div className="App">
             <Routes>
-              <Route path="/"         element={<Home/>}     />
+              <Route path="/"         element={<Home posts={posts} setPosts={setPosts} setItem={setItem}/>}/>
               <Route path="register"  element={<Register/>} />
-              <Route path="upload"    element={<UploadPage/>}   />
-              <Route path='item'      element={<PostItem/>} />
+              <Route path="upload"    element={<UploadPage posts={posts} setPosts={setPosts} />}   />
+              <Route path='item/:id'  element={<PostItem item={item} setItem={setItem} setShouldReload={setShouldReload}/>}/>
             </Routes>
           </div>
       }
