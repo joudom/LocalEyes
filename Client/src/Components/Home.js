@@ -4,13 +4,13 @@ import Navigation from './Navigation';
 import PostGrid from './PostGrid';
 import Footer from './Footer';
 
-const Home = () => {
+const Home = ({posts, setPosts, setItem}) => {
   return (
       <div>
           <Navigation/>
           <div className="wrapper">
             <LeftFilter/>
-            <PostGrid/>
+            <PostGrid posts={posts} setPosts={setPosts} setItem={setItem}/>
           </div>
           <Footer/>
     </div>
