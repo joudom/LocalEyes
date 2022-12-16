@@ -28,19 +28,19 @@ function Register() {
         <h1 style={{ fontSize: "5vw" }}>Register</h1>
         <Form.Group className='mb-3 col-sm-4' style={{ display: "flexbox", alignItems: "center", justifyContent: "center", width: "100%" }}>
           <Form.Label>Email</Form.Label>
-            <Form.Control placeholder="email@domain.com" onChange={updateUserRegistration("email")} />
+            <Form.Control placeholder="email@domain.com" />
             <p>*Must be a valid email address</p>
 
           <Form.Label>Username</Form.Label>
-            <Form.Control placeholder="Enter username" onChange={updateUserRegistration("username")} />
+            <Form.Control placeholder="Enter username" />
             <p>*Must be alphanumeric and between 5 - 12 characters</p>
           
           <Form.Label>Password</Form.Label>
-            <Form.Control placeholder="Enter password" onChange={updateUserRegistration("password")} />
+            <Form.Control placeholder="Enter password" />
             <p>*Must be alphanumeric & at least 8 characters including 1 special character</p>
 
           <Form.Label>Zip</Form.Label>
-            <Form.Control placeholder="Enter zipcode" onChange={updateUserRegistration("zipcode")} />
+            <Form.Control placeholder="Enter zipcode" />
             <p> *Must be numeric and 5 digits</p>
           
           <Button className='mt-3' variant="danger" type="submit" size='lg'>Submit</Button>
