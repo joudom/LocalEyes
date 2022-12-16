@@ -6,10 +6,11 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Footer from "./Footer";
 import EditModal from './EditModal'
+import axios from 'axios';
 import './PostItem.css';
 
 
-const PostItem = ({item, setItem, setShouldReload}) => {
+const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
   
   console.log('item in postitem', item)
 
@@ -20,6 +21,16 @@ const PostItem = ({item, setItem, setShouldReload}) => {
   const zip = encodeURIComponent('30324');
   const url = 
   `https://maps.googleapis.com/maps/api/staticmap?center=${stAddress}%20${city}%20${state}%20${zip}&zoom=17&scale=2&size=480x410&maptype=roadmap&format=jpg&key=${staticKey}&markers=size:mid%7Ccolor:0xf13709%7Clabel:%7C${stAddress}%20${city}%20${state}%20${zip}`
+
+  const deleteItem = async (id) => {
+    const response = await axios.delete(`http://localhost:8000/item/${item.id}`);
+    setItem({});
+    setPosts(
+       posts.filter((post) => {
+          return post.id !== id;
+       })
+    );
+ };
 
   return (
     <>
@@ -65,7 +76,7 @@ const PostItem = ({item, setItem, setShouldReload}) => {
             Leo D.<br/>
             <img src="https://images.t3n.de/news/wp-content/uploads/2022/05/Leonardo-DiCaprio-Meme.png?class=structuredData-small" className='local' alt="..."/>
             <EditModal item={item} setItem={setItem} setShouldReload={setShouldReload}/>
-            <Button variant="danger">Delete</Button>
+            <Button variant="danger" onClick={deleteItem}>Delete</Button>
           </Col>
         </Row>
       </Container>

@@ -243,7 +243,7 @@ const Uploader = ({ onSuccess, StateList }) => {
 
         <div className="file-upload ">
           <form method="post" action="#" id="#" onSubmit={onSubmit}>
-            <div class="form-group files">
+            <div className="form-group files">
               <label>Upload Your File </label>
               <input
                 onChange={onInputChange}

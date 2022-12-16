@@ -1,20 +1,20 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
     host: 'localhost',
-    user: 'jesseoudom',
+    user: 'davidhilleke',
     database: 'capstone',
     port: 5432
 });
 
-const createUser = (req, res) => {
-    const { username, password, email, name, city, state, zipcode } = req.body
-    pool.query('INSERT INTO users (username, password, email, name, city, state, zipcode) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', 
-                [username, password, email, name, city, state, zipcode], (error, results) => {
-      if (error) {
-        throw error
-      }
-      res.status(201).send(`User added with ID: ${results.rows[0].id}`)
-    })
+  const createUser = async (req, res) => {
+    try{
+      const { email, username, password, zip } = req.body
+      const newUser = await pool.query('INSERT INTO users (email, username, password, zip) VALUES ($1, $2, $3, $4) RETURNING *', 
+                [email, username, password, zip])
+      res.json(newUser)  
+      }catch (err) {
+        console.log(err)
+    }
   }
 
   const getPosts = (req, res) => {
@@ -53,26 +53,37 @@ const createUser = (req, res) => {
   }
   
   const deleteItem = (req, res) => {
-    const id = parseInt(request.params.id)
+    const id = parseInt(req.params.id)
     pool.query('DELETE FROM posts WHERE id = $1', [id], (error, results) => {
       if (error) {
         throw error
       }
       res.status(200).send(`Item deleted with ID: ${id}`)
+      console.log(results)
     })
   }
 
   const createItem = async (req, res) => {
     try{
-      console.log(req.body)
       const { item_name, store, total, user_link, description, address, city, state, zip, images, category } = req.body
-      const newUser = await pool.query('INSERT INTO posts (item_name, store, total, user_link, description, address, city, state, zip, images, category) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *', 
+      const newItem = await pool.query('INSERT INTO posts (item_name, store, total, user_link, description, address, city, state, zip, images, category) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *', 
                 [item_name, store, total, user_link, description, address, city, state, zip, images, category])
-      res.json(newUser)  
+      res.json(newItem)  
       }catch (err) {
         console.log(err)
     }
   }
+
+
+  // const filterPosts = (req, res) => {
+  //   const { category } = req.params;
+  //   pool.query('SELECT * FROM posts WHERE category = $1', [category], (error, results) => {
+  //     if (error) {
+  //       throw error
+  //     }
+  //     res.status(200).json(results.rows)
+  //   })
+  // }
 
   module.exports = {
     createUser,
@@ -81,6 +92,7 @@ const createUser = (req, res) => {
     updateItem,
     deleteItem,
     createItem,
+    // filterPosts,
     // getFavorites,
     // authUser
   }
