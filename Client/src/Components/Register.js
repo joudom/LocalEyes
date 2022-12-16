@@ -1,5 +1,4 @@
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Navigation from './Navigation';
@@ -7,62 +6,49 @@ import Footer from './Footer';
 import axios from 'axios';
 
 function Register() {
+
+  // Registratio Requirements
+  const emailRegex = /^[a-z0-9](?=.*[@])$/
+  const userRegex = /^[a-zA-Z0-9]{5,12}$/
+  const pwdRegex = /^[a-zA-Z0-9](?=.*[!@#$%^&*]){8,}$/
+  const zipRegex = /^[0-9]{5,}$/
+
   return (
     <>
    <Navigation/>
-    <Form method='post'>
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail">
+    <Form 
+      onSubmit
+      method='post'
+      style={{
+        display: "flex", alignItems: "center", justifyContent: "center", marginTop: "5vh", 
+        marginBottom: "5vh", marginLeft: "25%", height: "70vh", backgroundColor: "whitesmoke", 
+        opacity: ".9", color: "black", width: "50%", borderRadius: "50px", border: "solid"
+      }}>
+      <Row>
+        <h1 style={{ fontSize: "5vw" }}>Register</h1>
+        <Form.Group className='mb-3 col-sm-4' style={{ display: "flexbox", alignItems: "center", justifyContent: "center", width: "100%" }}>
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-        </Form.Group>
+            <Form.Control placeholder="email@domain.com" />
+            <p>*Must be a valid email address</p>
 
-        <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Label>Username</Form.Label>
+            <Form.Control placeholder="Enter username" />
+            <p>*Must be alphanumeric and between 5 - 12 characters</p>
+          
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-      </Row>
+            <Form.Control placeholder="Enter password" />
+            <p>*Must be alphanumeric & at least 8 characters including 1 special character</p>
 
-      <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor" />
-      </Form.Group>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>State</Form.Label>
-          <Form.Select defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridZip">
           <Form.Label>Zip</Form.Label>
-          <Form.Control />
+            <Form.Control placeholder="Enter zipcode" />
+            <p> *Must be numeric and 5 digits</p>
+          
+          <Button className='mt-3' variant="danger" type="submit" size='lg'>Submit</Button>
         </Form.Group>
       </Row>
-
-      <Form.Group className="mb-3" id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-      </Form>
-      <Footer />
-      </>
+    </Form>
+  <Footer/>
+    </>
   );
 }
 

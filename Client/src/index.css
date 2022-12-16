@@ -14,8 +14,10 @@ code {
 
 .background {
 	background:url(./map.webp) no-repeat 50% 50%;
-  height: 100vh;
-  background-position: center;
+  min-height: 100%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   background-size: cover;
+  width: 100%;
 }
