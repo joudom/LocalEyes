@@ -110,7 +110,7 @@ const EditModal = ({item, setItem, setShouldReload}) => {
                    />
               </Form.Group>
             </Row>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={handleClose}>
               Save Changes
             </Button>
           </Form>
