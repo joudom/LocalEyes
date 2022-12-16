@@ -59,6 +59,7 @@ const pool = new Pool({
         throw error
       }
       res.status(200).send(`Item deleted with ID: ${id}`)
+      console.log(results)
     })
   }
 
