@@ -1,17 +1,15 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import {
   CDBSidebar,
   CDBSidebarContent,
-  // CDBSidebarFooter,
   CDBSidebarHeader,
   CDBSidebarMenu,
   CDBSidebarMenuItem,
 } from 'cdbreact';
-import { NavLink } from 'react-router-dom';
 
 const LeftFilter = () => {
   return (
-
     <div style={{ display: 'flex', height: '100vh', top: '0', position: 'sticky' }}>
       <CDBSidebar textColor="white" backgroundColor="gray" toggled="false">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
@@ -39,20 +37,9 @@ const LeftFilter = () => {
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
-
-        {/* <CDBSidebarFooter style={{ textAlign: 'center' }}>
-          <div
-            style={{
-              padding: '20px 5px',
-            }}
-          >
-            Sidebar Footer
-          </div>
-        </CDBSidebarFooter> */}
       </CDBSidebar>
     </div>
   );
 };
-
 
 export default LeftFilter;
