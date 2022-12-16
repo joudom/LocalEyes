@@ -16,7 +16,6 @@ const EditModal = ({item, setItem, setShouldReload}) => {
     setItem({...item, [type]: event.target.value}, [item])
   })
 
-
   const updateItem = async (e) => {
     e.preventDefault();
     const response = await axios.put(`http://localhost:8000/item/${item.id}`, item)

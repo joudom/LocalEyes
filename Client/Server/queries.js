@@ -6,17 +6,6 @@ const pool = new Pool({
     port: 5432
 });
 
-// const createUser = (req, res) => {
-//     const { username, password, email, name, city, state, zipcode } = req.body
-//     pool.query('INSERT INTO users (username, password, email, name, city, state, zipcode) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', 
-//                 [username, password, email, name, city, state, zipcode], (error, results) => {
-//       if (error) {
-//         throw error
-//       }
-//       res.status(201).send(`User added with ID: ${results.rows[0].id}`)
-//     })
-//   }
-
   const createUser = async (req, res) => {
     try{
       const { username, password, email, name, city, state, zipcode } = req.body
@@ -64,7 +53,7 @@ const pool = new Pool({
   }
   
   const deleteItem = (req, res) => {
-    const id = parseInt(request.params.id)
+    const id = parseInt(req.params.id)
     pool.query('DELETE FROM posts WHERE id = $1', [id], (error, results) => {
       if (error) {
         throw error
