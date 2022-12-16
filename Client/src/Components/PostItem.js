@@ -69,7 +69,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
             <img 
               width="95%" 
               src={url}
-              alt="Google Map Image" />
+              alt="Google Map" />
           </Col>
           <Col xxl={3} className='text border'>
             Local:<br/>

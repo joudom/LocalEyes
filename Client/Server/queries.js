@@ -8,9 +8,9 @@ const pool = new Pool({
 
   const createUser = async (req, res) => {
     try{
-      const { username, password, email, name, city, state, zipcode } = req.body
-      const newUser = await pool.query('INSERT INTO users (username, password, email, name, city, state, zipcode) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', 
-                [username, password, email, name, city, state, zipcode])
+      const { email, username, password, zip } = req.body
+      const newUser = await pool.query('INSERT INTO users (email, username, password, zip) VALUES ($1, $2, $3, $4) RETURNING *', 
+                [email, username, password, zip])
       res.json(newUser)  
       }catch (err) {
         console.log(err)

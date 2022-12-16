@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Navigation from './Navigation';
@@ -22,77 +22,56 @@ const Register = ({user, setUser}) => {
     console.log('response',response)
   }
 
+  // Registratio Requirements
+  const emailRegex = /^[a-z0-9](?=.*[@])$/;
+  const userRegex = /^[a-zA-Z0-9]{5,12}$/;
+  const pwdRegex = /^[a-zA-Z0-9](?=.*[!@#$%^&*]){8,}$/;
+  const zipRegex = /^[0-9]{5,}$/;
+
   return (
     <>
    <Navigation/>
-    <Form method='post' onSubmit={registerUser}>
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridUsername">
-          <Form.Label>Username</Form.Label>
-          <Form.Control 
-              placeholder="Enter username"
-              onChange={updateUserDataHandler("username")}
-              />
-        </Form.Group>
-        
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control 
-              type="password" 
-              placeholder="Password" 
-              onChange={updateUserDataHandler("password")}
-              />
-        </Form.Group>
-        
-        <Form.Group as={Col} controlId="formGridEmail">
+    <Form method='post' onSubmit={registerUser}
+      style={{
+        display: "flex", alignItems: "center", justifyContent: "center", marginTop: "5vh", 
+        marginBottom: "5vh", marginLeft: "25%", height: "70vh", backgroundColor: "whitesmoke", 
+        opacity: ".9", color: "black", width: "50%", borderRadius: "50px", border: "solid"
+      }}>
+      <Row>
+        <h1 style={{ fontSize: "5vw" }}>Register</h1>
+        <Form.Group className='mb-3 col-sm-4' style={{ display: "flexbox", alignItems: "center", justifyContent: "center", width: "100%" }}>
           <Form.Label>Email</Form.Label>
-          <Form.Control 
-              type="email" 
-              placeholder="Enter email"
-              onChange={updateUserDataHandler("email")}
-              />
-        </Form.Group>
-      </Row>
+            <Form.Control 
+                placeholder="email@domain.com" 
+                onChange={updateUserDataHandler("email")}/>
+            {/* <p><small>*Must be a valid email address</small></p> */}
 
-      <Form.Group className="mb-3" controlId="formGridName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control 
-            placeholder="John Doe" 
-            onChange={updateUserDataHandler("name")}
-        />
-      </Form.Group>
+          <Form.Label>Username</Form.Label>
+            <Form.Control 
+                placeholder="Enter username" 
+                onChange={updateUserDataHandler("username")}
+                />
+            {/* <p><small>*Must be alphanumeric and between 5 - 12 characters</small></p> */}
+          
+          <Form.Label>Password</Form.Label>
+            <Form.Control 
+                placeholder="Enter password" 
+                onChange={updateUserDataHandler("password")}
+                />
+            {/* <p><small>*Must be alphanumeric & at least 8 characters including 1 special character</small></p> */}
 
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control onChange={updateUserDataHandler("city")}/>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>State</Form.Label>
-          <Form.Select defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
-          </Form.Select>
-          <Form.Control onChange={updateUserDataHandler("state")}/>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridZip">
           <Form.Label>Zip</Form.Label>
-          <Form.Control onChange={updateUserDataHandler("zip")}/>
+            <Form.Control 
+                placeholder="Enter zipcode" 
+                onChange={updateUserDataHandler("zip")}/>
+            {/* <p> <small>*Must be numeric and 5 digits</small></p> */}
+          
+          <Button className='mt-3' variant="danger" type="submit" size='lg'>Submit</Button>
         </Form.Group>
       </Row>
-
-      <Form.Group className="mb-3" id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-      </Form>
-      <Footer />
-      </>
+    </Form>
+  <Footer/>
+    </>
   );
 }
 
