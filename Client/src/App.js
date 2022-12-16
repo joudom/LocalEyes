@@ -15,8 +15,23 @@ L74 red/white magifying glass on file
 L96 blue/white/red shopping bag
 */
 
-function App() {
+const App = () => {
+  const initialUserData = {
+    username: "",
+    password: "",
+    email: "",
+    name: "",
+    city: "",
+    state: "",
+    zip: "",
+  };
+
   const [loading, setLoading] = useState(false)
+  const [posts, setPosts] = useState([]);
+  const [item, setItem] = useState({});
+  const [shouldReload, setShouldReload] = useState(false);
+  const [user, setUser] = useState(initialUserData)
+  let { id } = useParams();
 
   useEffect(() => {
     setLoading(true)
@@ -25,10 +40,6 @@ function App() {
     }, 5000)
   }, [])
 
-  const [posts, setPosts] = useState([]);
-  const [item, setItem] = useState({});
-  const [shouldReload, setShouldReload] = useState(false);
-  let { id } = useParams();
 
   useEffect(() => {
     fetch('http://localhost:8000')
@@ -42,9 +53,6 @@ function App() {
         })
 }, [shouldReload])
 
-// console.log('posts:', posts)
-console.log('item:', item)
-
   return (
     <>
       {
@@ -54,9 +62,9 @@ console.log('item:', item)
           <div className="App">
             <Routes>
               <Route path="/"         element={<Home posts={posts} setPosts={setPosts} setItem={setItem}/>}/>
-              <Route path="register"  element={<Register/>} />
+              <Route path="register"  element={<Register user={user} setUser={setUser}/>} />
               <Route path="upload"    element={<UploadPage posts={posts} setPosts={setPosts} />}   />
-              <Route path='item/:id'  element={<PostItem item={item} setItem={setItem} setShouldReload={setShouldReload}/>}/>
+              <Route path='item/:id'  element={<PostItem item={item} setItem={setItem} setShouldReload={setShouldReload} posts={posts} setPosts={setPosts}/>}/>
             </Routes>
           </div>
       }
