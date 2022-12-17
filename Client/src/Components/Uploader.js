@@ -16,11 +16,11 @@ const Uploader = ({ onSuccess, StateList }) => {
     city: "",
     state: "",
     zip: "",
-    photos: [],
+    // photos: [],
     category: ""
   };
 
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState();
   const [userData, setUserData] = useState(initialUserData);
   const [state, setState] = useState();
 
@@ -40,40 +40,62 @@ const Uploader = ({ onSuccess, StateList }) => {
   // console.log(userData)
 
 
-  useEffect(() => {
-    setUserData({ 
-      ...userData, 
-      photos: files
-    })
-    // console.log(userData)
-    }, [files])
+  // useEffect(() => {
+  //   setUserData({ 
+  //     ...userData, 
+  //     photos: files
+  //   })
+  //   // console.log(userData)
+  //   }, [files])
 
+  // const convertToBase64 = (fileUploaded) => {
+  //   return new Promise((resolve, reject) => {
+  //     const fileReader = new FileReader();
+  //     fileReader.readAsDataURL(fileUploaded);
+  //     fileReader.onload = () => {
+  //       resolve(fileReader.result);
+  //     };
+  //     fileReader.onerror = (error) => {
+  //       reject(error);
+  //     };
+  //   });
+  // }
 
-  const onInputChange = (e) => {
+  const onInputChange = async (e) => {
+
     setFiles(e.target.files);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    for (let [key, value] of formData.entries()) {
-      console.log(key, value);
-    }
+    // const formData = new FormData(e.currentTarget);
+    // for (let [key, value] of formData.entries()) {
+    //   console.log(key, value);
+    // }
 
-    const data = new FormData();
-    for (let i = 0; i < files.length; i++) {
-      data.append("file", files[i]);
+    // const data = new FormData();
+    // for (let i = 0; i < files.length; i++) {
+    //   data.append("file", files[i]);
+    // }
+    const formData = new FormData();
+    for (let key in userData) {
+      formData.append(key, userData[key]);
     }
-    data.append('inputData', userData)
-
-    // console.log(data)
+    //formData.append('userData', userData);
+    //console.log(files);
+    const arr = [...files];
+    arr.forEach((file, id) => {
+      formData.append(`file-${id}`, file, file.name);
+    })
+    console.log(userData);
+    // formData.append('userData', userData);
 
     axios
-      .post("//localhost:8000/upload", userData, {
-        // headers: {
-        //   'Content-Type': 'multipart/form-data'
-        // }
+      .post("//localhost:8000/upload", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       })
       .then((response) => {
         toast.success("Upload Successful");
@@ -112,10 +134,10 @@ const Uploader = ({ onSuccess, StateList }) => {
                   onChange={updateUserDataHandler("category")}
                 >
                   <option>Choose Category...</option>
-                  <option value="clothing">Clothing</option>
-                  <option value="electronics">Electronics</option>
-                  <option value="food">Food</option>
-                  <option value="general">General</option>
+                  <option value="Clothing">Clothing</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Food">Food</option>
+                  <option value="General">General</option>
                 </Form.Select>
               </Form.Group>
             </Row>
@@ -245,11 +267,11 @@ const Uploader = ({ onSuccess, StateList }) => {
           <form method="post" action="#" id="#" onSubmit={onSubmit}>
             <div className="form-group files">
               <label>Upload Your File </label>
-              <input
+              <input         
                 onChange={onInputChange}
                 type="file"
+                accept=".jpeg, .png, .jpg"
                 class="form-control"
-                multiple
                 required
               />
             </div>
