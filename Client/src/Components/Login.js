@@ -59,12 +59,12 @@ const Login = () => {
               backdrop="static"
             >
               <p className={errMsg ? "errMsg" : "hide"}>{errMsg}</p>
-                <Modal.Header closeButton>
-                  <Modal.Title>Sign in</Modal.Title>
-                </Modal.Header>
+                <Form method="post" onSubmit={getLoggedIn}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Sign in</Modal.Title>
+                  </Modal.Header>
 
-                <Modal.Body>
-                  <Form method="post" onSubmit={getLoggedIn}>
+                  <Modal.Body>
                     <Form.Group className="mb-3">
                       <Form.Label>Username</Form.Label>
                       <Form.Control
@@ -78,7 +78,7 @@ const Login = () => {
                         autoFocus
                       />
                     </Form.Group>
-                  
+                    
                     <Form.Group className="mb-3">
                       <Form.Label>Password</Form.Label>
                       <Form.Control 
@@ -90,13 +90,14 @@ const Login = () => {
                         required
                       />
                     </Form.Group>
-                  </Form>
-                </Modal.Body>
+                  </Modal.Body>
 
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-                  <Button variant="primary" type="submit">Sign in</Button>
-                </Modal.Footer>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+                    <Button variant="primary" type="submit">Sign in</Button>
+                  </Modal.Footer>
+                </Form>
+
                   <p style={{ padding: "1%"}}>Not a member yet? <br/>
                     <span>
                       <Link to={{pathname: "/register"}}>Get Localized!</Link>
