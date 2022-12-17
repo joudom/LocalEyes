@@ -20,9 +20,10 @@ const Navigation = () => {
           LocalEyes
         <FaSearchDollar/>
         </Navbar.Brand>
-        <Form inline className=" d-flex">
+        <Form inline className="d-flex">
           <FormControl
             type="text"
+            id=""
             placeholder="search"
             className="mr-sm-2 mx-2"
           />
@@ -37,9 +38,9 @@ const Navigation = () => {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="register">
+            {/* <Nav.Link as={Link} to="register">
               Register
-            </Nav.Link>
+            </Nav.Link> */}
             <Nav.Link href="#link">Help</Nav.Link>
             <NavDropdown title="More" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

@@ -45,8 +45,8 @@ const Login = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
+          <Button variant="secondary" href="/register">
+            Register
           </Button>
           <Button variant="primary" onClick={handleClose}>
             Sign in
