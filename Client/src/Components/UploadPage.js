@@ -7,10 +7,13 @@ import Navigation from "./Navigation";
 import "react-toastify/dist/ReactToastify.css";
 
 
-const UploadPage = () => {
+const UploadPage = ({setCategory, setShouldReload}) => {
   const [files, setFiles] = useState([]);
   const onSuccess = (savedFiles) => {
+
     setFiles(savedFiles);
+    setCategory("")
+    setShouldReload(true)
   };
   return (
       <div>

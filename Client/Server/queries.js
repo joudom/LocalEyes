@@ -1,21 +1,33 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
     host: 'localhost',
-    user: 'jesseoudom',
+    user: 'ec',
     database: 'capstone',
     port: 5432
 });
 
-  const createUser = async (req, res) => {
-    try{
-      const { email, username, password, zip } = req.body
-      const newUser = await pool.query('INSERT INTO users (email, username, password, zip) VALUES ($1, $2, $3, $4) RETURNING *', 
-                [email, username, password, zip])
-      res.json(newUser)  
-      }catch (err) {
-        console.log(err)
-    }
+const createUser = async (req, res) => {
+  try{
+    const { email, username, password, zip } = req.body
+    const newUser = await pool.query('INSERT INTO users (email, username, password, zip) VALUES ($1, $2, $3, $4) RETURNING *', 
+              [email, username, password, zip])
+    res.json(newUser)  
+    }catch (err) {
+      console.log(err)
   }
+  }
+
+  const filterPosts = (req, res) => {
+      const { category } = req.params;
+      pool.query('SELECT * FROM posts WHERE category = $1', [category], (error, results) => {
+        if (error) {
+          throw error
+        }
+        res.status(200).json(results.rows)
+      })
+    }
+
+
 
   const getPosts = (req, res) => {
     pool.query('SELECT * FROM posts ORDER BY id DESC', (error, results) => {
@@ -64,11 +76,16 @@ const pool = new Pool({
   }
 
   const createItem = async (req, res) => {
-    try{
-      const { item_name, store, total, user_link, description, address, city, state, zip, images, category } = req.body
-      const newItem = await pool.query('INSERT INTO posts (item_name, store, total, user_link, description, address, city, state, zip, images, category) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *', 
-                [item_name, store, total, user_link, description, address, city, state, zip, images, category])
-      res.json(newItem)  
+    try {
+      console.log('formData');
+      console.log(req.body)
+      console.log(req.files)
+      let img = req.files['file-0'].data.toString('base64');
+      let imgType = req.files['file-0'].mimetype;
+      const { item_name, store, total, user_link, description, address, city, state, zip, category } = req.body
+      const newUser = await pool.query('INSERT INTO posts (item_name, store, total, user_link, description, address, city, state, zip, images, imageformat, category) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *', 
+                [item_name, store, total, user_link, description, address, city, state, zip, img, imgType, category])
+      res.json(newUser)  
       }catch (err) {
         console.log(err)
     }
@@ -87,6 +104,7 @@ const pool = new Pool({
 
   module.exports = {
     createUser,
+    filterPosts,
     getPosts,
     getItem,
     updateItem,
