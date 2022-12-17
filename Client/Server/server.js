@@ -1,14 +1,16 @@
 const express = require("express")
 const multer = require("multer")
 const cors = require("cors")
+const fileUpload = require('express-fileupload')
 const port = 8000
-const app = express()
+const app = express();
+app.use(express.urlencoded({ extended: true}));
 app.use(cors())
+app.use(fileUpload());
 app.use(express.static('public'))
 const db = require('./queries')
-app.use(express.json());
-app.use(express.urlencoded());
 
+app.use(express.json());
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
