@@ -1,7 +1,7 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
     host: 'localhost',
-    user: 'ec',
+    user: 'davidhilleke',
     database: 'capstone',
     port: 5432
 });
@@ -51,10 +51,10 @@ const createUser = async (req, res) => {
 
   const updateItem = (req, res) => {
     const id = parseInt(req.params.id)
-    const { item_name, store, total, description, address, city, state, zip, images, category } = req.body
+    const { item, store, total, description, address, city, state, zip, images, category } = req.body
     pool.query(
-      'UPDATE posts SET item_name = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9, category = $10 WHERE id = $11',
-      [item_name, store, total, description, address, city, state, zip, images, category, id],
+      'UPDATE posts SET item = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9, category = $10 WHERE id = $11',
+      [item, store, total, description, address, city, state, zip, images, category, id],
       (error, results) => {
         if (error) {
           throw error
