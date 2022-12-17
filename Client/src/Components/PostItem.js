@@ -36,7 +36,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
     <>
       <Navigation />
       <Container className="postbox">
-        <Row className="h-50">
+        <Row>
           <Col xxl={8} className='text border'>
             Image Carousel<br/>
             <img src
@@ -60,7 +60,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
             </div>
           </Col>
         </Row>
-        <Row style={{height: "48.5vh"}}>
+        <Row> 
           <Col xxl={4} className='text border'>
             Item Description<br/>
             {item.description}

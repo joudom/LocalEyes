@@ -1,11 +1,15 @@
 .postbox {
     width: 60%;
-    height: 97vh;
-    width: 70vw;
+    /* height: 97vh; */
+    /* width: 70vw; */
     background-color: white;
     opacity: .9;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    margin-top: 50px;
+    margin-bottom: 75px;
+}
+
+.wrapper {
+    margin-bottom: 50px;
 }
 
 h1 {
