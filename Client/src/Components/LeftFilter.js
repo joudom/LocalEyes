@@ -1,13 +1,13 @@
 import { React, useState } from "react";
+import { NavLink } from 'react-router-dom';
 import {
   CDBSidebar,
   CDBSidebarContent,
-  // CDBSidebarFooter,
   CDBSidebarHeader,
   CDBSidebarMenu,
   CDBSidebarMenuItem,
 } from "cdbreact";
-import { NavLink } from "react-router-dom";
+
 
 const LeftFilter = ({ setCategory }) => {
  
@@ -78,16 +78,6 @@ const LeftFilter = ({ setCategory }) => {
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
-
-        {/* <CDBSidebarFooter style={{ textAlign: 'center' }}>
-          <div
-            style={{
-              padding: '20px 5px',
-            }}
-          >
-            Sidebar Footer
-          </div>
-        </CDBSidebarFooter> */}
       </CDBSidebar>
     </div>
   );

@@ -1,12 +1,9 @@
 CREATE TABLE users (
     id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    email text,
     username text,
     password text,
-    email text,
-    name text,
-    city text,
-    state text,
-    zipcode integer
+    zip integer
 );
 
 CREATE TABLE posts (

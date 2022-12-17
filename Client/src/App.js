@@ -15,8 +15,25 @@ L74 red/white magifying glass on file
 L96 blue/white/red shopping bag
 */
 
-function App() {
-  const [loading, setLoading] = useState(false);
+const App = () => {
+  const initialUserData = {
+    username: "",
+    password: "",
+    email: "",
+    name: "",
+    city: "",
+    state: "",
+    zip: "",
+  };
+
+  const [loading, setLoading] = useState(false)
+  const [posts, setPosts] = useState([]);
+  const [item, setItem] = useState({});
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [shouldReload, setShouldReload] = useState(false);
+  const [user, setUser] = useState(initialUserData)
+  let { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
@@ -24,14 +41,6 @@ function App() {
       setLoading(false);
     }, 5000);
   }, []);
-
-  const [posts, setPosts] = useState([]);
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [item, setItem] = useState({});
-  const [category, setCategory] = useState([]);
-
-  const [shouldReload, setShouldReload] = useState(false);
-  let { id } = useParams();
 
   useEffect(() => {
     console.log("also here");

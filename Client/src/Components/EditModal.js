@@ -16,11 +16,8 @@ const EditModal = ({item, setItem, setShouldReload}) => {
     setItem({...item, [type]: event.target.value}, [item])
   })
 
-
   const updateItem = async (e) => {
-    console.log('here')
     e.preventDefault();
-    console.log('item', item)
     const response = await axios.put(`http://localhost:8000/item/${item.id}`, item)
     .then(() => {
         setItem(item)
@@ -113,7 +110,7 @@ const EditModal = ({item, setItem, setShouldReload}) => {
                    />
               </Form.Group>
             </Row>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={handleClose}>
               Save Changes
             </Button>
           </Form>
