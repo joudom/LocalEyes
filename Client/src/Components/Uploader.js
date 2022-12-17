@@ -112,10 +112,10 @@ const Uploader = ({ onSuccess, StateList }) => {
                   onChange={updateUserDataHandler("category")}
                 >
                   <option>Choose Category...</option>
-                  <option value="clothing">Clothing</option>
-                  <option value="electronics">Electronics</option>
-                  <option value="food">Food</option>
-                  <option value="general">General</option>
+                  <option value="Clothing">Clothing</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Food">Food</option>
+                  <option value="General">General</option>
                 </Form.Select>
               </Form.Group>
             </Row>
