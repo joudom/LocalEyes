@@ -8,7 +8,7 @@ import { StateList } from "./StateList";
 
 const Uploader = ({ onSuccess, StateList }) => {
   const initialUserData = {
-    name: "",
+    item: "",
     store: "",
     total: "",
     description: "",
@@ -120,10 +120,10 @@ const Uploader = ({ onSuccess, StateList }) => {
           <Form method="post" action="#" id="#" onSubmit={formHandler()}>
           <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridAddress1">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Item</Form.Label>
                 <Form.Control
                   placeholder="Macbook Pro 2016, GoPro Hero 9, etc.."
-                  onChange={updateUserDataHandler("name")}
+                  onChange={updateUserDataHandler("item")}
                   required
                 />
               </Form.Group>
