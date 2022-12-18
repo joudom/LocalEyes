@@ -1,6 +1,6 @@
 import Home from "./Components/Home";
 import Register from "./Components/Register";
-import PostItem from './Components/PostItem';
+import PostItem from "./Components/PostItem";
 import UploadPage from "./Components/UploadPage";
 import { Routes, Route, useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
@@ -29,46 +29,100 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [posts, setPosts] = useState([]);
   const [item, setItem] = useState({});
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [category, setCategory] = useState([]);
   const [shouldReload, setShouldReload] = useState(false);
   const [user, setUser] = useState(initialUserData)
   let { id } = useParams();
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     setTimeout(() => {
-      setLoading(false)
-    }, 5000)
-  }, [])
-
+      setLoading(false);
+    }, 5000);
+  }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8000')
-      .then(res => {
-        if(res.ok) {return res.json()}
-        throw res 
+    console.log("also here");
+    fetch("http://localhost:8000")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw res;
       })
-      .then(data => { 
-          setPosts(data)
-          setShouldReload(false) 
-        })
-}, [shouldReload])
+      .then((data) => {
+        setPosts(data);
+        setFilteredPosts(data);
+        setShouldReload(false);
+      });
+  }, [shouldReload]);
+
+  useEffect(() => {
+    console.log("here");
+    if (category) {
+      const post = posts.filter((post) => post.category === category);
+      console.log(post);
+      setFilteredPosts(post);
+    } else {
+      setFilteredPosts(posts);
+    }
+  }, [category]);
+
+  // console.log('posts:', posts)
+  console.log("item:", item);
 
   return (
     <>
-      {
-        loading ? 
-          <L36 style={{ height: "75vh", width: "75vw", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}/>
-          :
-          <div className="App">
-            <Routes>
-              <Route path="/"         element={<Home posts={posts} setPosts={setPosts} setItem={setItem}/>}/>
-              <Route path="register"  element={<Register user={user} setUser={setUser}/>} />
-              <Route path="upload"    element={<UploadPage posts={posts} setPosts={setPosts} />}   />
-              <Route path='item/:id'  element={<PostItem item={item} setItem={setItem} setShouldReload={setShouldReload} posts={posts} setPosts={setPosts}/>}/>
-            </Routes>
-          </div>
-      }
-      </>
+      {loading ? (
+        <L36
+          style={{
+            height: "75vh",
+            width: "75vw",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+      ) : (
+        <div className="App">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  posts={filteredPosts}
+                  setPosts={setPosts}
+                  setItem={setItem}
+                  setCategory={setCategory}
+                />
+              }
+            />
+            <Route path="register" element={<Register />} />
+            <Route
+              path="upload"
+              element={
+                <UploadPage
+                  setCategory={setCategory}
+                  setShouldReload={setShouldReload}
+                />
+              }
+            />
+            <Route
+              path="item/:id"
+              element={
+                <PostItem
+                  item={item}
+                  setItem={setItem}
+                  setShouldReload={setShouldReload}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      )}
+    </>
   );
 }
 export default App;

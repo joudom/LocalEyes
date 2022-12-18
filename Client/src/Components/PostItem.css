@@ -1,6 +1,7 @@
 .postbox {
-    width: 70%;
-    height: 100%;
+    width: 60%;
+    /* height: 97vh; */
+    /* width: 70vw; */
     background-color: white;
     opacity: .9;
     margin-top: 3%;
