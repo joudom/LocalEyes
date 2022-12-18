@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const Pool = require('pg').Pool;
 const pool = new Pool({
     host: 'localhost',
@@ -9,8 +10,9 @@ const pool = new Pool({
   const createUser = async (req, res) => {
     try{
       const { email, username, password, zip } = req.body
+      let hashedPassword = await bcrypt.hash(password, 10);
       const newUser = await pool.query('INSERT INTO users (email, username, password, zip) VALUES ($1, $2, $3, $4) RETURNING *', 
-                [email, username, password, zip])
+                [email, username, hashedPassword, zip])
       res.json(newUser)  
       }catch (err) {
         console.log(err)
