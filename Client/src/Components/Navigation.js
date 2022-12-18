@@ -38,7 +38,7 @@ const Navigation = () => {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link href="#link">Help</Nav.Link>
+            <Nav.Link as={Link } to="/help">Help</Nav.Link>
             <NavDropdown title="More" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

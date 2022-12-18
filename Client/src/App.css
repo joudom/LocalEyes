@@ -113,3 +113,10 @@ body {
   text-transform: capitalize;
   text-align: center;
 }
+
+.helpTitle {
+  margin-top: 20px;
+  background-color: rgba(142, 142, 142, 0.939);
+  color: rgb(238, 238, 238);
+  border-radius: 2px;
+}

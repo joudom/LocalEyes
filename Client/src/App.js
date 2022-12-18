@@ -2,8 +2,9 @@ import Home from "./Components/Home";
 import Register from "./Components/Register";
 import PostItem from "./Components/PostItem";
 import UploadPage from "./Components/UploadPage";
+import Help from "./Components/Help";
 import { Routes, Route, useParams } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { L36 } from "react-isloading";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,13 +27,13 @@ const App = () => {
     zip: "",
   };
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [item, setItem] = useState({});
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [category, setCategory] = useState([]);
   const [shouldReload, setShouldReload] = useState(false);
-  const [user, setUser] = useState(initialUserData)
+  const [user, setUser] = useState(initialUserData);
   let { id } = useParams();
 
   useEffect(() => {
@@ -99,6 +100,7 @@ const App = () => {
                 />
               }
             />
+            <Route path="/help" element={<Help />} />
             <Route path="/register" element={<Register />} />
             <Route
               path="/upload"
@@ -124,5 +126,5 @@ const App = () => {
       )}
     </>
   );
-}
+};
 export default App;
