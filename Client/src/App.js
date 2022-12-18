@@ -99,9 +99,9 @@ const App = () => {
                 />
               }
             />
-            <Route path="register" element={<Register />} />
+            <Route path="/register" element={<Register />} />
             <Route
-              path="upload"
+              path="/upload"
               element={
                 <UploadPage
                   setCategory={setCategory}
