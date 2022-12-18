@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const Pool = require('pg').Pool;
 const pool = new Pool({
     host: 'localhost',
@@ -6,15 +7,16 @@ const pool = new Pool({
     port: 5432
 });
 
-const createUser = async (req, res) => {
-  try{
-    const { email, username, password, zip } = req.body
-    const newUser = await pool.query('INSERT INTO users (email, username, password, zip) VALUES ($1, $2, $3, $4) RETURNING *', 
-              [email, username, password, zip])
-    res.json(newUser)  
-    }catch (err) {
-      console.log(err)
-  }
+  const createUser = async (req, res) => {
+    try{
+      const { email, username, password, zip } = req.body
+      let hashedPassword = await bcrypt.hash(password, 10);
+      const newUser = await pool.query('INSERT INTO users (email, username, password, zip) VALUES ($1, $2, $3, $4) RETURNING *', 
+                [email, username, hashedPassword, zip])
+      res.json(newUser)  
+      }catch (err) {
+        console.log(err)
+    }
   }
 
   const filterPosts = (req, res) => {
