@@ -4,11 +4,11 @@ import PostItem from './Components/PostItem';
 import UploadPage from "./Components/UploadPage";
 import { Routes, Route, useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
-import { L36, L57, L74, L96  } from "react-isloading";
+import { L36 } from "react-isloading";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-/*
+/* Top Spinners for Loading
 L36 yellowbook
 L57 green search - user, folder, glass
 L74 red/white magifying glass on file
