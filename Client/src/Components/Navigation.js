@@ -20,7 +20,7 @@ const Navigation = () => {
           LocalEyes
           <FaSearchDollar />
         </Navbar.Brand>
-        <Form inline className="d-flex">
+        <Form className="d-flex">
           <FormControl
             type="text"
             id=""
