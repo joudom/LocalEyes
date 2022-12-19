@@ -29,7 +29,6 @@ const Login = () => {
     e.preventDefault();
       setUsername('');
       setPassword('');
-      setShow(false);
       setSuccess(true);
     }
 
@@ -44,7 +43,13 @@ const Login = () => {
       {
         success ? (
           <div>
-          <h1 style={{ fontSize: "5vw" }}>You are logged in.</h1>
+          <h1 style={{ 
+            fontSize: "5vh", 
+            textAlign: "center",
+            marginTop: "5%" 
+          }}> 
+            You are logged in.
+          </h1>
           <br/>
           <span>
           <Button variant="secondary" onClick={handleClose}>Close</Button>

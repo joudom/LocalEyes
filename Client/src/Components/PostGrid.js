@@ -37,7 +37,7 @@ function PostGrid({posts, setItem}) {
                 <Card style={{ cursor: "pointer" }}>
                   <Card.Img variant="top" src={getImgSrc(item.images, item.imageformat)} />
                   <Card.Body>
-                    <Card.Title>{item.item_name}</Card.Title>
+                    <Card.Title>{item.item}</Card.Title>
                     <Card.Text>
                       ${item.total}
                     </Card.Text>

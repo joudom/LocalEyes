@@ -43,7 +43,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    console.log("also here");
+    // console.log("also here");
     fetch("http://localhost:8000")
       .then((res) => {
         if (res.ok) {
@@ -59,10 +59,10 @@ const App = () => {
   }, [shouldReload]);
 
   useEffect(() => {
-    console.log("here");
+    // console.log("here");
     if (category) {
       const post = posts.filter((post) => post.category === category);
-      console.log(post);
+      // console.log(post);
       setFilteredPosts(post);
     } else {
       setFilteredPosts(posts);
@@ -70,7 +70,7 @@ const App = () => {
   }, [category]);
 
   // console.log('posts:', posts)
-  console.log("item:", item);
+  // console.log("item:", item);
 
   return (
     <>
@@ -99,7 +99,7 @@ const App = () => {
                 />
               }
             />
-            <Route path="/register" element={<Register />} />
+            <Route path="/register" element={<Register user={user} setUser={setUser} />} />
             <Route
               path="/upload"
               element={

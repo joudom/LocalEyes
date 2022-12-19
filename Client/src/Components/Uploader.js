@@ -271,7 +271,7 @@ const Uploader = ({ onSuccess, StateList }) => {
                 onChange={onInputChange}
                 type="file"
                 accept=".jpeg, .png, .jpg"
-                class="form-control"
+                className="form-control"
                 required
               />
             </div>
