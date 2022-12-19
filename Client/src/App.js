@@ -99,7 +99,7 @@ const App = () => {
                 />
               }
             />
-            <Route path="register" element={<Register />} />
+            <Route path="register" element={<Register user={user} setUser={setUser} />} />
             <Route
               path="upload"
               element={
