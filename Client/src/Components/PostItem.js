@@ -47,6 +47,8 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
                 Posted: 12/06/2022<br/>
                 Ends: 12/09/2022<br/><br/> */}
               <div className="text location">
+                ITEM: <br/>
+                {item.item} <br/><br/> 
                 CATEGORY: <br/>
                 {item.category} <br/><br/> 
                 DEAL:<br/>
