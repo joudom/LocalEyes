@@ -33,6 +33,7 @@ const App = () => {
   const [category, setCategory] = useState([]);
   const [shouldReload, setShouldReload] = useState(false);
   const [user, setUser] = useState(initialUserData)
+  const [search, setSearch] = useState('')
   let { id } = useParams();
 
   useEffect(() => {
@@ -43,7 +44,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    console.log("also here");
     fetch("http://localhost:8000")
       .then((res) => {
         if (res.ok) {
@@ -59,7 +59,6 @@ const App = () => {
   }, [shouldReload]);
 
   useEffect(() => {
-    console.log("here");
     if (category) {
       const post = posts.filter((post) => post.category === category);
       console.log(post);
@@ -69,8 +68,22 @@ const App = () => {
     }
   }, [category]);
 
+  useEffect(() => {
+    console.log("here");
+    if (search) {
+      const post = posts.filter((post) => {
+        if (
+          post.item.toLowerCase().includes(search) ||
+          post.category.toLowerCase().includes(search)
+        ) {
+          setFilteredPosts(post);
+        } else {
+          setFilteredPosts(posts);
+    }})} return
+    }, [search]);
+
   // console.log('posts:', posts)
-  console.log("item:", item);
+  // console.log("item:", item);
 
   return (
     <>
@@ -96,6 +109,7 @@ const App = () => {
                   setPosts={setPosts}
                   setItem={setItem}
                   setCategory={setCategory}
+                  setSearch={setSearch}
                 />
               }
             />
