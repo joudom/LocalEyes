@@ -11,14 +11,15 @@ import {
 import { Link } from "react-router-dom";
 import {FaSearchDollar, FaRegPlusSquare} from 'react-icons/fa'
 import Login from "./Login";
+// import Search from "./Search";
 
-const Navigation = ({setSearch}) => {
+const Navigation = ({search, setSearch}) => {
   
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log(e.target.value)
-    setSearch(e.target.value)
-  }
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   console.log(e.target.value)
+  //   setSearch(e.target.value)
+  // }
   
   return (
     <Navbar sticky="top" bg="dark" variant={"dark"} expand="lg">
@@ -27,10 +28,12 @@ const Navigation = ({setSearch}) => {
           LocalEyes
         <FaSearchDollar/>
         </Navbar.Brand>
-        <Form inline className="d-flex" onSubmit={(e) => {handleSearch(e)}}>
+        {/* <Search inputValue={search} onInputChange={handleSearch}/> */}
+        <Form inline className="d-flex">
           <FormControl
             type="text"
             placeholder="search"
+            onChange={(e) => {setSearch(e.target.value.toLowerCase())}}
             className="mr-sm-2 mx-2"
           />
             <Button variant="outline-success" type="submit">

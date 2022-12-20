@@ -70,17 +70,18 @@ const App = () => {
 
   useEffect(() => {
     console.log("here");
-    if (search) {
-      const post = posts.filter((post) => {
-        if (
-          post.item.toLowerCase().includes(search) ||
-          post.category.toLowerCase().includes(search)
-        ) {
-          setFilteredPosts(post);
-        } else {
-          setFilteredPosts(posts);
-    }})} return
-    }, [search]);
+    if (!search) {
+      setFilteredPosts(posts)
+      return
+    } 
+    const newPosts = posts.filter((post) => {
+      if (
+        post.item.toLowerCase().includes(search) ||
+        post.category.toLowerCase().includes(search)
+      ) {
+        setFilteredPosts(newPosts);
+      }
+    })}, [search]);
 
   // console.log('posts:', posts)
   // console.log("item:", item);
@@ -110,6 +111,7 @@ const App = () => {
                   setItem={setItem}
                   setCategory={setCategory}
                   setSearch={setSearch}
+                  search={search}
                 />
               }
             />
