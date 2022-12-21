@@ -2,8 +2,9 @@ import Home from "./Components/Home";
 import Register from "./Components/Register";
 import PostItem from "./Components/PostItem";
 import UploadPage from "./Components/UploadPage";
+import Help from "./Components/Help";
 import { Routes, Route, useParams } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { L36 } from "react-isloading";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,15 +27,18 @@ const App = () => {
     zip: "",
   };
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [item, setItem] = useState({});
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [category, setCategory] = useState([]);
   const [shouldReload, setShouldReload] = useState(false);
   const [user, setUser] = useState(initialUserData)
+  const [search, setSearch] = useState('')
   let { id } = useParams();
 
+
+  
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -43,7 +47,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    // console.log("also here");
     fetch("http://localhost:8000")
       .then((res) => {
         if (res.ok) {
@@ -59,7 +62,6 @@ const App = () => {
   }, [shouldReload]);
 
   useEffect(() => {
-    // console.log("here");
     if (category) {
       const post = posts.filter((post) => post.category === category);
       // console.log(post);
@@ -69,8 +71,37 @@ const App = () => {
     }
   }, [category]);
 
-  // console.log('posts:', posts)
-  // console.log("item:", item);
+  useEffect(() => {
+    if (search && search.length > 3) {
+      const searchedPosts = posts.filter((post) => {
+        console.log('postitem', post.item)
+        if (post.item.includes(search) || post.category.includes(search)) {
+          return post
+        }
+      });
+      setFilteredPosts(searchedPosts);
+    } else {
+      setFilteredPosts(posts);
+    }
+  }, [search]);
+
+  // useEffect(() => {
+  //   console.log(search)
+  //   if (!search) {
+  //     setFilteredPosts(posts)
+  //     return
+  //   } 
+  //   const newPosts = posts.filter((post) => {
+  //     console.log('search', typeof(search))
+  //     if (
+  //       post.item.includes(search) ||
+  //       post.category.includes(search)
+  //     ) {
+  //       return post;
+  //     } 
+  //   })
+  //   setFilteredPosts(newPosts)  
+  // }, [search]);
 
   return (
     <>
@@ -96,10 +127,13 @@ const App = () => {
                   setPosts={setPosts}
                   setItem={setItem}
                   setCategory={setCategory}
+                  setSearch={setSearch}
+                  search={search}
                 />
               }
             />
-            <Route path="/register" element={<Register user={user} setUser={setUser} />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="register" element={<Register user={user} setUser={setUser} />} />
             <Route
               path="/upload"
               element={
@@ -116,6 +150,7 @@ const App = () => {
                   item={item}
                   setItem={setItem}
                   setShouldReload={setShouldReload}
+               
                 />
               }
             />
@@ -124,5 +159,5 @@ const App = () => {
       )}
     </>
   );
-}
+};
 export default App;
