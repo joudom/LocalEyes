@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const Pool = require('pg').Pool;
 const pool = new Pool({
     host: 'localhost',
-    user: 'jesseoudom',
+    user: 'davidhilleke',
     database: 'capstone',
     port: 5432
 });
@@ -65,6 +65,21 @@ const pool = new Pool({
       }
     )
   }
+
+  // const updateItem = (req, res) => {
+  //   const id = parseInt(req.params.id)
+  //   const { item, store, total, description, address, city, state, zip, images, category } = req.body
+  //   pool.query(
+  //     'UPDATE posts SET item = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9, category = $10, WHERE = $11',
+  //     [item, store, total, description, address, city, state, zip, images, category, id],
+  //     (error, results) => {
+  //       if (error) {
+  //         throw error
+  //       }
+  //       res.status(200).send(`Item modified with ID: ${id}`)
+  //     }
+  //   )
+  // }
   
   const deleteItem = (req, res) => {
     const id = parseInt(req.params.id)
@@ -84,7 +99,7 @@ const pool = new Pool({
       console.log(req.files)
       let img = req.files['file-0'].data.toString('base64');
       let imgType = req.files['file-0'].mimetype;
-      const { item, store, total, user_link, description, address, city, state, zip, category } = req.body
+      const { item, store, total, user_link, description, address, city, state, zip, images, category, imageformat } = req.body
       const newUser = await pool.query('INSERT INTO posts (item, store, total, user_link, description, address, city, state, zip, images, imageformat, category) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *', 
                 [item, store, total, user_link, description, address, city, state, zip, img, imgType, category])
       res.json(newUser)  

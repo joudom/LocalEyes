@@ -33,6 +33,7 @@ const App = () => {
   const [category, setCategory] = useState([]);
   const [shouldReload, setShouldReload] = useState(false);
   const [user, setUser] = useState(initialUserData)
+  const [search, setSearch] = useState('')
   let { id } = useParams();
 
   useEffect(() => {
@@ -43,7 +44,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    // console.log("also here");
     fetch("http://localhost:8000")
       .then((res) => {
         if (res.ok) {
@@ -59,7 +59,6 @@ const App = () => {
   }, [shouldReload]);
 
   useEffect(() => {
-    // console.log("here");
     if (category) {
       const post = posts.filter((post) => post.category === category);
       // console.log(post);
@@ -69,8 +68,37 @@ const App = () => {
     }
   }, [category]);
 
-  // console.log('posts:', posts)
-  // console.log("item:", item);
+  useEffect(() => {
+    if (search && search.length > 3) {
+      const searchedPosts = posts.filter((post) => {
+        console.log('postitem', post.item)
+        if (post.item.includes(search) || post.category.includes(search)) {
+          return post
+        }
+      });
+      setFilteredPosts(searchedPosts);
+    } else {
+      setFilteredPosts(posts);
+    }
+  }, [search]);
+
+  // useEffect(() => {
+  //   console.log(search)
+  //   if (!search) {
+  //     setFilteredPosts(posts)
+  //     return
+  //   } 
+  //   const newPosts = posts.filter((post) => {
+  //     console.log('search', typeof(search))
+  //     if (
+  //       post.item.includes(search) ||
+  //       post.category.includes(search)
+  //     ) {
+  //       return post;
+  //     } 
+  //   })
+  //   setFilteredPosts(newPosts)  
+  // }, [search]);
 
   return (
     <>
@@ -96,10 +124,12 @@ const App = () => {
                   setPosts={setPosts}
                   setItem={setItem}
                   setCategory={setCategory}
+                  setSearch={setSearch}
+                  search={search}
                 />
               }
             />
-            <Route path="/register" element={<Register user={user} setUser={setUser} />} />
+            <Route path="register" element={<Register user={user} setUser={setUser} />} />
             <Route
               path="/upload"
               element={
