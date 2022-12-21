@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const Pool = require('pg').Pool;
 const pool = new Pool({
     host: 'localhost',
-    user: 'davidhilleke',
+    user: 'ec',
     database: 'capstone',
     port: 5432
 });

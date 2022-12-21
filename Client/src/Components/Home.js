@@ -11,7 +11,7 @@ const Home = ({ posts, setPosts, setItem, setCategory, setSearch, search }) => {
           <Navigation setSearch={setSearch} search={search}/>
           <div className="wrapper">
             <LeftFilter setCategory={setCategory}/>
-            <PostGrid posts={posts} setPosts={setPosts} setItem={setItem}/>
+            <PostGrid posts={posts} setPosts={setPosts} setItem={setItem} />
           </div>
           <Footer/>
     </div>

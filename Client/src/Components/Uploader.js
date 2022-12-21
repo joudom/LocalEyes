@@ -6,7 +6,7 @@ import { Form, Col, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { StateList } from "./StateList";
 
-const Uploader = ({ onSuccess, StateList }) => {
+const Uploader = ({ onSuccess }) => {
   const initialUserData = {
     item: "",
     store: "",
@@ -164,55 +164,9 @@ const Uploader = ({ onSuccess, StateList }) => {
                   onChange={updateUserDataHandler("state")}
                 >
                   <option>Choose...</option>
-                  <option>AL</option>
-                  <option>AK</option>
-                  <option>AZ</option>
-                  <option>AR</option>
-                  <option>CA</option>
-                  <option>CO</option>
-                  <option>CT</option>
-                  <option>DE</option>
-                  <option>DC</option>
-                  <option>FL</option>
-                  <option>GA</option>
-                  <option>FL</option>
-                  <option>HI</option>
-                  <option>ID</option>
-                  <option>IL</option>
-                  <option>IN</option>
-                  <option>IA</option>
-                  <option>KS</option>
-                  <option>KY</option>
-                  <option>LA</option>
-                  <option>ME</option>
-                  <option>MD</option>
-                  <option>MA</option>
-                  <option>MI</option>
-                  <option>MN</option>
-                  <option>MS</option>
-                  <option>MO</option>
-                  <option>MT</option>
-                  <option>NE</option>
-                  <option>NV</option>
-                  <option>NH</option>
-                  <option>NJ</option>
-                  <option>NM</option>
-                  <option>NC</option>
-                  <option>OH</option>
-                  <option>OR</option>
-                  <option>PA</option>
-                  <option>RI</option>
-                  <option>SC</option>
-                  <option>SD</option>
-                  <option>TN</option>
-                  <option>TX</option>
-                  <option>UT</option>
-                  <option>VT</option>
-                  <option>VA</option>
-                  <option>WA</option>
-                  <option>WV</option>
-                  <option>WI</option>
-                  <option>WY</option>
+                  {StateList.map(state => {
+                    return <option>{state }</option>
+                  } )}
                 </Form.Select>
               </Form.Group>
 

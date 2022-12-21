@@ -2,8 +2,9 @@ import Home from "./Components/Home";
 import Register from "./Components/Register";
 import PostItem from "./Components/PostItem";
 import UploadPage from "./Components/UploadPage";
+import Help from "./Components/Help";
 import { Routes, Route, useParams } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { L36 } from "react-isloading";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,7 +27,7 @@ const App = () => {
     zip: "",
   };
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [item, setItem] = useState({});
   const [filteredPosts, setFilteredPosts] = useState([]);
@@ -36,6 +37,8 @@ const App = () => {
   const [search, setSearch] = useState('')
   let { id } = useParams();
 
+
+  
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -129,6 +132,7 @@ const App = () => {
                 />
               }
             />
+            <Route path="/help" element={<Help />} />
             <Route path="register" element={<Register user={user} setUser={setUser} />} />
             <Route
               path="/upload"
@@ -146,6 +150,7 @@ const App = () => {
                   item={item}
                   setItem={setItem}
                   setShouldReload={setShouldReload}
+               
                 />
               }
             />
@@ -154,5 +159,5 @@ const App = () => {
       )}
     </>
   );
-}
+};
 export default App;
