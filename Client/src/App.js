@@ -69,22 +69,36 @@ const App = () => {
   }, [category]);
 
   useEffect(() => {
-    console.log("here");
-    if (!search) {
-      setFilteredPosts(posts)
-      return
-    } 
-    const newPosts = posts.filter((post) => {
-      if (
-        post.item.toLowerCase().includes(search) ||
-        post.category.toLowerCase().includes(search)
-      ) {
-        setFilteredPosts(newPosts);
-      }
-    })}, [search]);
+    if (search && search.length > 3) {
+      const searchedPosts = posts.filter((post) => {
+        console.log('postitem', post.item)
+        if (post.item.includes(search) || post.category.includes(search)) {
+          return post
+        }
+      });
+      setFilteredPosts(searchedPosts);
+    } else {
+      setFilteredPosts(posts);
+    }
+  }, [search]);
 
-  // console.log('posts:', posts)
-  // console.log("item:", item);
+  // useEffect(() => {
+  //   console.log(search)
+  //   if (!search) {
+  //     setFilteredPosts(posts)
+  //     return
+  //   } 
+  //   const newPosts = posts.filter((post) => {
+  //     console.log('search', typeof(search))
+  //     if (
+  //       post.item.includes(search) ||
+  //       post.category.includes(search)
+  //     ) {
+  //       return post;
+  //     } 
+  //   })
+  //   setFilteredPosts(newPosts)  
+  // }, [search]);
 
   return (
     <>

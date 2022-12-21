@@ -33,7 +33,7 @@ const Navigation = ({search, setSearch}) => {
           <FormControl
             type="text"
             placeholder="search"
-            onChange={(e) => {setSearch(e.target.value.toLowerCase())}}
+            onChange={(e) => {setSearch(e.target.value)}}
             className="mr-sm-2 mx-2"
           />
             <Button variant="outline-success" type="submit">
