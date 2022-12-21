@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import React from "react";
 import Navigation from "./Navigation";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -34,9 +34,9 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
       <Container className="postbox">
         <Row>
           <Col xxl={8} className='text' style={{ borderRight: "2px solid black", borderBottom: "2px solid black" }}>
-            <h1>The Pics</h1><br/>
+            <h1>The Pic</h1><br/>
             <img src
-            ="https://www.cnet.com/a/img/resize/cf15df883a6cdfd994c1451e9b2698f859ed4c3a/hub/2017/06/06/349b7e65-a855-44f0-ae0a-6610ebca0809/apple-macbook-pro-12-inch-2017-4181.jpg?auto=webp&width=768"className="img" alt="..."/>
+            ={item.images} className="img" alt="..."/>
           </Col>
           <Col xxl={4} style={{ borderBottom: "2px solid black" }}>
             <div className="text">
@@ -48,7 +48,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
                 Ends: 12/09/2022<br/><br/> */}
               <div className="text location">
                 ITEM: <br/>
-                {item.item} <br/><br/>
+                {item.item} <br/><br/> 
                 CATEGORY: <br/>
                 {item.category} <br/><br/> 
                 DEAL:<br/>
@@ -76,7 +76,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
           <Col xxl={3} className='text'>
           <h1>The Local</h1><br/>
             Leo D.<br/>
-            <img src="https://images.t3n.de/news/wp-content/uploads/2022/05/Leonardo-DiCaprio-Meme.png?class=structuredData-small" className='local' alt="..."/>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7hz0UCaiu9QQw-s7ixndTuLgpyQH8tPqUk-SR5d6i9dLPTVs-OGs5CfqXAq7te6iGC8&usqp=CAU" className='local' alt="..."/>
             <EditModal item={item} setItem={setItem} setShouldReload={setShouldReload}/>
             <Button variant="danger" onClick={deleteItem}>Delete</Button>
           </Col>

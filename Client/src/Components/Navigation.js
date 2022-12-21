@@ -9,7 +9,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import {FaSearchDollar, FaRegPlusSquare} from 'react-icons/fa'
+import { FaSearchDollar, FaRegPlusSquare } from "react-icons/fa";
 import Login from "./Login";
 // import Search from "./Search";
 
@@ -26,7 +26,7 @@ const Navigation = ({search, setSearch}) => {
       <Container>
         <Navbar.Brand as={Link} to="/">
           LocalEyes
-        <FaSearchDollar/>
+          <FaSearchDollar />
         </Navbar.Brand>
         {/* <Search inputValue={search} onInputChange={handleSearch}/> */}
         <Form inline className="d-flex">
@@ -40,11 +40,13 @@ const Navigation = ({search, setSearch}) => {
               Search
             </Button>
         </Form>
-      
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
             <Nav.Link href="#link">Help</Nav.Link>
             <NavDropdown title="More" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -57,7 +59,9 @@ const Navigation = ({search, setSearch}) => {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={Link} to="upload"><FaRegPlusSquare size={25}/></Nav.Link>
+            <Nav.Link as={Link} to="/upload">
+              <FaRegPlusSquare size={25} />
+            </Nav.Link>
             <Login />
           </Nav>
         </Navbar.Collapse>

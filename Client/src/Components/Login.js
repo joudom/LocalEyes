@@ -13,51 +13,51 @@ const Login = () => {
   const handleClose = () => {
     setShow(false);
     setUsername('');
-    setPwd('');
+    setPassword('');
   }
   
   const [username, setUsername] = useState('');
-  const [pwd, setPwd] = useState('');
-  const [errMsg, SetErrMsg] = useState('');
+  const [password, setPassword] = useState('');
+  const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
 
   useEffect(()=>{
-    SetErrMsg('');
-  }, [username, pwd])
+    setErrMsg('');
+  }, [username, password])
 
   const getLoggedIn = async (e) => {
-    // const response = await axios.get(`http://localhost:8000/register`, user)
-    // .then(() => {
-    //     setUser(user)
-    // });
     e.preventDefault();
-    setShow(false);
-    setUsername('');
-    setPwd('');
-    console.log(username,pwd);
-    setSuccess(true);
-  }
+      setUsername('');
+      setPassword('');
+      setSuccess(true);
+    }
 
   return (
     <>
       <Button variant="secondary" onClick={handleShow}>Sign in</Button>
-      {
-        success ? (
-          <div>
-            <h1 style={{ fontSize: "5vw" }}>Welcome Back!</h1>
-            <br/>
-            <span>
-              <Link to={{pathname: "/"}}>Return to Home</Link>
-            </span>
-          </div>
-        ) : 
-        (
-          <>
-            <Modal 
+      <Modal 
               show={show} 
               onHide={handleClose}
               backdrop="static"
             >
+      {
+        success ? (
+          <div>
+          <h1 style={{ 
+            fontSize: "5vh", 
+            textAlign: "center",
+            marginTop: "5%" 
+          }}> 
+            You are logged in.
+          </h1>
+          <br/>
+          <span>
+          <Button variant="secondary" onClick={handleClose}>Close</Button>
+          </span>
+        </div>
+        ) : 
+        (
+          <>
               <p className={errMsg ? "errMsg" : "hide"}>{errMsg}</p>
                 <Form method="post" onSubmit={getLoggedIn}>
                   <Modal.Header closeButton>
@@ -85,8 +85,8 @@ const Login = () => {
                         type="password" 
                         id="password"
                         placeholder="Enter password"
-                        onChange={(e)=>setPwd(e.target.value)}
-                        value={pwd}
+                        onChange={(e)=>setPassword(e.target.value)}
+                        value={password}
                         required
                       />
                     </Form.Group>
@@ -103,10 +103,10 @@ const Login = () => {
                       <Link to={{pathname: "/register"}}>Get Localized!</Link>
                     </span>
                   </p>
-            </Modal>
-          </>
+                  </>
         )
       }
+      </Modal>
     </>
   );
 }
