@@ -41,10 +41,11 @@ const EditModal = ({item, setItem, setShouldReload}) => {
             <Form.Group className="mb-3" controlId="formGridName">
               <Form.Label>Name</Form.Label>
               <Form.Control
-                placeholder={item.item_name}
+                placeholder={item.item}
                 onChange={updateItemDataHandler("name")}
               />
             </Form.Group>
+            
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridStore">
                 <Form.Label>Store</Form.Label>

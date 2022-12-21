@@ -32,64 +32,28 @@ const Uploader = ({ onSuccess }) => {
     console.log('inside formhandler')
     event.preventDefault()
     console.log(userData);
-   
     }, 
     [userData]
-    
   )
-  // console.log(userData)
-
-
-  // useEffect(() => {
-  //   setUserData({ 
-  //     ...userData, 
-  //     photos: files
-  //   })
-  //   // console.log(userData)
-  //   }, [files])
-
-  // const convertToBase64 = (fileUploaded) => {
-  //   return new Promise((resolve, reject) => {
-  //     const fileReader = new FileReader();
-  //     fileReader.readAsDataURL(fileUploaded);
-  //     fileReader.onload = () => {
-  //       resolve(fileReader.result);
-  //     };
-  //     fileReader.onerror = (error) => {
-  //       reject(error);
-  //     };
-  //   });
-  // }
-
+  
   const onInputChange = async (e) => {
-
     setFiles(e.target.files);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // const formData = new FormData(e.currentTarget);
-    // for (let [key, value] of formData.entries()) {
-    //   console.log(key, value);
-    // }
-
-    // const data = new FormData();
-    // for (let i = 0; i < files.length; i++) {
-    //   data.append("file", files[i]);
-    // }
     const formData = new FormData();
-    for (let key in userData) {
-      formData.append(key, userData[key]);
+      for (let key in userData) {
+        formData.append(key, userData[key]);
     }
-    //formData.append('userData', userData);
-    //console.log(files);
+ 
     const arr = [...files];
-    arr.forEach((file, id) => {
-      formData.append(`file-${id}`, file, file.name);
+      arr.forEach((file, id) => {
+        formData.append(`file-${id}`, file, file.name);
     })
+    
     console.log(userData);
-    // formData.append('userData', userData);
 
     axios
       .post("//localhost:8000/upload", formData, {
@@ -225,7 +189,7 @@ const Uploader = ({ onSuccess }) => {
                 onChange={onInputChange}
                 type="file"
                 accept=".jpeg, .png, .jpg"
-                class="form-control"
+                className="form-control"
                 required
               />
             </div>

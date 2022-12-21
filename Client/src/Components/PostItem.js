@@ -38,7 +38,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
     <>
       <Navigation />
       <Container className="postbox">
-        <Row className="h-50">
+        <Row>
           <Col xxl={8} className='text' style={{ borderRight: "2px solid black", borderBottom: "2px solid black" }}>
             <h1>The Pics</h1><br />
             
@@ -54,6 +54,8 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
                 Posted: 12/06/2022<br/>
                 Ends: 12/09/2022<br/><br/> */}
               <div className="text location">
+                ITEM: <br/>
+                {item.item} <br/><br/> 
                 CATEGORY: <br/>
                 {item.category} <br/><br/> 
                 DEAL:<br/>
@@ -62,7 +64,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
             </div>
           </Col>
         </Row>
-        <Row style={{height: "48.5vh"}}>
+        <Row>
           <Col xxl={4} className='text' style={{ borderRight: "2px solid black" }}>
               <h1>The Spot</h1><br/>
             <div className="text location">
@@ -81,7 +83,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
           <Col xxl={3} className='text'>
           <h1>The Local</h1><br/>
             Leo D.<br/>
-            <img src="https://images.t3n.de/news/wp-content/uploads/2022/05/Leonardo-DiCaprio-Meme.png?class=structuredData-small" className='local' alt="..."/>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7hz0UCaiu9QQw-s7ixndTuLgpyQH8tPqUk-SR5d6i9dLPTVs-OGs5CfqXAq7te6iGC8&usqp=CAU" className='local' alt="..."/>
             <EditModal item={item} setItem={setItem} setShouldReload={setShouldReload}/>
             <Button variant="danger" onClick={deleteItem}>Delete</Button>
           </Col>
