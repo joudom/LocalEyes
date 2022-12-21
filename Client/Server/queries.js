@@ -51,10 +51,10 @@ const createUser = async (req, res) => {
 
   const updateItem = (req, res) => {
     const id = parseInt(req.params.id)
-    const { item, store, total, description, address, city, state, zip, images, category, imageformat } = req.body
+    const { item, store, total, description, address, city, state, zip, images, category } = req.body
     pool.query(
-      'UPDATE posts SET item = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9, category = $10, imageformat = $11, WHERE id = $12',
-      [item, store, total, description, address, city, state, zip, images, category, imageformat, id],
+      'UPDATE posts SET item = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9, category = $10 WHERE id = $11',
+      [item, store, total, description, address, city, state, zip, images, category, id],
       (error, results) => {
         if (error) {
           throw error
@@ -63,6 +63,21 @@ const createUser = async (req, res) => {
       }
     )
   }
+
+  // const updateItem = (req, res) => {
+  //   const id = parseInt(req.params.id)
+  //   const { item, store, total, description, address, city, state, zip, images, category } = req.body
+  //   pool.query(
+  //     'UPDATE posts SET item = $1, store = $2, total = $3, description = $4, address = $5, city = $6, state = $7, zip = $8, images = $9, category = $10, WHERE = $11',
+  //     [item, store, total, description, address, city, state, zip, images, category, id],
+  //     (error, results) => {
+  //       if (error) {
+  //         throw error
+  //       }
+  //       res.status(200).send(`Item modified with ID: ${id}`)
+  //     }
+  //   )
+  // }
   
   const deleteItem = (req, res) => {
     const id = parseInt(req.params.id)
