@@ -36,6 +36,8 @@ const App = () => {
   const [user, setUser] = useState(initialUserData);
   let { id } = useParams();
 
+
+  
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -118,6 +120,7 @@ const App = () => {
                   item={item}
                   setItem={setItem}
                   setShouldReload={setShouldReload}
+               
                 />
               }
             />

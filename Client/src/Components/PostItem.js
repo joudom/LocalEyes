@@ -28,15 +28,22 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
     );
  };
 
+ function getImgSrc(img, mimeType) {
+  if (img && mimeType)
+    return `data:${mimeType};base64,${img}`;
+
+  return null;
+}
   return (
     <>
       <Navigation />
       <Container className="postbox">
         <Row className="h-50">
           <Col xxl={8} className='text' style={{ borderRight: "2px solid black", borderBottom: "2px solid black" }}>
-            <h1>The Pics</h1><br/>
-            <img src
-            ="https://www.cnet.com/a/img/resize/cf15df883a6cdfd994c1451e9b2698f859ed4c3a/hub/2017/06/06/349b7e65-a855-44f0-ae0a-6610ebca0809/apple-macbook-pro-12-inch-2017-4181.jpg?auto=webp&width=768"className="img" alt="..."/>
+            <h1>The Pics</h1><br />
+            
+            <img src={getImgSrc(item.images, item.imageformat)}
+              className="img" alt="..." />
           </Col>
           <Col xxl={4} style={{ borderBottom: "2px solid black" }}>
             <div className="text">
