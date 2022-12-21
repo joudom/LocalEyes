@@ -17,12 +17,12 @@ const LeftFilter = ({ setCategory }) => {
     >
       <CDBSidebar textColor="white" backgroundColor="gray" toggled={(!false)}>
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-          <a
+          <span
             className="text-decoration-none"
             style={{ color: "inherit" }}
           >
             Filters
-          </a>
+          </span>
         </CDBSidebarHeader>
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
