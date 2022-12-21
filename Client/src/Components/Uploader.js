@@ -117,8 +117,13 @@ const Uploader = ({ onSuccess, StateList }) => {
             justifyContent: "center",
           }}
         >
-          <Form method="post" action="#" id="#" onSubmit={formHandler()}>
+          <Form method="post" action="#" id="#" onSubmit={formHandler()}
+            style={{
+              display: "grid", alignContent: "center",justifyContent: "center", marginTop: "5vh", height: "84vh", 
+              backgroundColor: "whitesmoke", color: "black", width: "50%", borderRadius: "50px", border: "solid"
+            }}>
           <Row className="mb-3">
+              <h1 style={{ fontSize: "5vw" }}>The Deal</h1>
               <Form.Group as={Col} controlId="formGridAddress1">
                 <Form.Label>Item</Form.Label>
                 <Form.Control
@@ -263,10 +268,14 @@ const Uploader = ({ onSuccess, StateList }) => {
           </Form>
         </div>
 
-        <div className="file-upload ">
+        <div className="file-upload container" 
+          style={{
+            display: "grid", alignItems: "center", justifyContent: "center", marginTop: "5vh", height: "70vh", 
+            backgroundColor: "whitesmoke", color: "black", width: "25%", borderRadius: "50px", border: "solid", marginBottom: "7vh"
+          }}>
           <form method="post" action="#" id="#" onSubmit={onSubmit}>
             <div className="form-group files">
-              <label>Upload Your File </label>
+            <h1 style={{ fontSize: "5vw" }}>Uploader</h1>
               <input         
                 onChange={onInputChange}
                 type="file"
@@ -275,6 +284,7 @@ const Uploader = ({ onSuccess, StateList }) => {
                 required
               />
             </div>
+            <br/>
             <Button variant="primary" type="submit">
               Submit
             </Button>
