@@ -76,7 +76,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
           <Col xxl={3} className='text'>
           <h1>The Local</h1><br/>
             Leo D.<br/>
-            <img src="https://images.t3n.de/news/wp-content/uploads/2022/05/Leonardo-DiCaprio-Meme.png?class=structuredData-small" className='local' alt="..."/>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7hz0UCaiu9QQw-s7ixndTuLgpyQH8tPqUk-SR5d6i9dLPTVs-OGs5CfqXAq7te6iGC8&usqp=CAU" className='local' alt="..."/>
             <EditModal item={item} setItem={setItem} setShouldReload={setShouldReload}/>
             <Button variant="danger" onClick={deleteItem}>Delete</Button>
           </Col>
