@@ -28,15 +28,22 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
     );
  };
 
+ function getImgSrc(img, mimeType) {
+  if (img && mimeType)
+    return `data:${mimeType};base64,${img}`;
+
+  return null;
+}
   return (
     <>
       <Navigation />
       <Container className="postbox">
-        <Row className="h-50">
+        <Row>
           <Col xxl={8} className='text' style={{ borderRight: "2px solid black", borderBottom: "2px solid black" }}>
-            <h1>The Pic</h1><br/>
-            <img src
-            ={item.images} className="img" alt="..."/>
+            <h1>The Pics</h1><br />
+            
+            <img src={getImgSrc(item.images, item.imageformat)}
+              className="img" alt="..." />
           </Col>
           <Col xxl={4} style={{ borderBottom: "2px solid black" }}>
             <div className="text">
@@ -57,7 +64,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
             </div>
           </Col>
         </Row>
-        <Row style={{height: "48.5vh"}}>
+        <Row>
           <Col xxl={4} className='text' style={{ borderRight: "2px solid black" }}>
               <h1>The Spot</h1><br/>
             <div className="text location">

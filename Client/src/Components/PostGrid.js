@@ -5,7 +5,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import './PostGrid.css';
 
-function PostGrid({posts, setItem}) {
+
+function PostGrid({posts, setItem, getImgSrc}) {
   
 
   function getImgSrc(img, mimeType) {
@@ -31,9 +32,11 @@ function PostGrid({posts, setItem}) {
         </p>
         </div>
         <Row className="g-4 cards">
+       
           {posts && posts.length > 0 ? (posts.map((item, id) => (
             <Col key={id} lg="3">
               <Link onClick={() => setItem(item)} to={`/item/${item.id}`}>
+            
                 <Card style={{ cursor: "pointer" }}>
                   <Card.Img variant="top" src={getImgSrc(item.images, item.imageformat)} />
                   <Card.Body>
@@ -49,7 +52,8 @@ function PostGrid({posts, setItem}) {
               </Link>
             </Col>
           )))
-          :null}
+              : null}
+           
         </Row>
       </Container>
     </>
