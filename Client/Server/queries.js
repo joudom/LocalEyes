@@ -19,6 +19,28 @@ const pool = new Pool({
     }
   }
 
+  const loginUser = (req, res) => {
+    const { username, password} = req.body
+    console.log(username, password)
+    pool.query('SELECT * FROM users WHERE username = $1', [username], (error, results) => {
+      if (error) {
+        res.send({ error: error })
+      }
+      console.log(results.rows[0])
+      if (results.rows.length > 0) {
+        bcrypt.compare(password, results.rows[0].password, (error, response) => {
+            if (response) {
+              res.send(response);
+            } else {
+              res.send({ message: "Invalid Credentials" });
+            }
+        });
+      } else {
+        res.send({ message: "Credentials not found" });
+      }
+    })
+  }
+
   const filterPosts = (req, res) => {
       const { category } = req.params;
       pool.query('SELECT * FROM posts WHERE category = $1', [category], (error, results) => {
@@ -114,5 +136,6 @@ const pool = new Pool({
     createItem,
     // filterPosts,
     // getFavorites,
+    loginUser
     // authUser
   }

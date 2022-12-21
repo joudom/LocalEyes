@@ -25,6 +25,7 @@ const upload = multer({ storage }).array("file")
 
 //ROUTES
 app.post('/register', db.createUser)
+app.post('/', db.loginUser)
 app.get('/', db.getPosts) //done
 app.get('/item/:id', db.getItem) //done
 app.put('/item/:id', db.updateItem) //done
