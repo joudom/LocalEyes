@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
 import './Login.css'
 
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [loginStatus, setLoginStatus] = useState(false);
 
   useEffect(()=>{
     setErrMsg('');
@@ -27,10 +28,18 @@ const Login = () => {
 
   const getLoggedIn = async (e) => {
     e.preventDefault();
-      setUsername('');
-      setPassword('');
-      setSuccess(true);
-    }
+    axios.post('http://localhost:8000', {
+      username: username,
+      password: password
+    }).then((response) => {
+      if (response.data.message) {
+        setErrMsg(response.data.message);
+        setLoginStatus(false);
+      } else {
+        setLoginStatus(true);
+      }
+    });
+  };
 
   return (
     <>
@@ -41,14 +50,14 @@ const Login = () => {
               backdrop="static"
             >
       {
-        success ? (
+        loginStatus ? (
           <div>
           <h1 style={{ 
             fontSize: "5vh", 
             textAlign: "center",
             marginTop: "5%" 
           }}> 
-            You are logged in.
+            Welcome back {username}!
           </h1>
           <br/>
           <span>
@@ -58,7 +67,6 @@ const Login = () => {
         ) : 
         (
           <>
-              <p className={errMsg ? "errMsg" : "hide"}>{errMsg}</p>
                 <Form method="post" onSubmit={getLoggedIn}>
                   <Modal.Header closeButton>
                     <Modal.Title>Sign in</Modal.Title>
@@ -91,7 +99,7 @@ const Login = () => {
                       />
                     </Form.Group>
                   </Modal.Body>
-
+                  <p className={errMsg ? "errMsg" : "hide"}>{errMsg}</p>
                   <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>Cancel</Button>
                     <Button variant="primary" type="submit">Sign in</Button>
