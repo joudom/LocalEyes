@@ -35,7 +35,7 @@ function PostGrid({posts, setItem, getImgSrc}) {
        
           {posts && posts.length > 0 ? (posts.map((item, id) => (
             <Col key={id} lg="3">
-              <Link onClick={() => setItem(item)} to={`/item/${item.id}`}>
+              <Link onClick={() => setItem(item)} to={`/item/${item.id}`} style={{color: 'rgba(0, 0, 0, 0.9)', textDecoration: 'none'}}>
             
                 <Card style={{ cursor: "pointer" }}>
                   <Card.Img variant="top" src={getImgSrc(item.images, item.imageformat)} />

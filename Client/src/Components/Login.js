@@ -90,7 +90,8 @@ const Login = () => {
           <h1 style={{ 
             fontSize: "5vh", 
             textAlign: "center",
-            marginTop: "5%" 
+                marginTop: "5%" 
+            
           }}> 
             Welcome back {username}!
           </h1>
@@ -137,13 +138,13 @@ const Login = () => {
                     </Form.Group>
                   </Modal.Body>
                   <p className={errMsg ? "errMsg" : "hide"}>{errMsg}</p>
-                  <Modal.Footer>
+                  <Modal.Footer style={{justifyContent: 'center'}}>
                     <Button variant="secondary" onClick={handleClose}>Cancel</Button>
                     <Button variant="primary" type="submit">Sign in</Button>
                   </Modal.Footer>
                 </Form>
 
-                  <p style={{ padding: "1%"}}>Not a member yet? <br/>
+                <p style={{ padding: "1%", textAlign: 'center'}}>Not a member yet? <br/>
                     <span>
                       <Link to={{pathname: "/register"}}>Get Localized!</Link>
                     </span>
