@@ -94,7 +94,7 @@ const Register = ({user, setUser}) => {
                   <h1 style={{ fontSize: "5vw" }}>Welcome, {user.username}!</h1>
                   <br/>
                   <span>
-                    <Link to={{pathname: "/"}}>Return Home and Sign n!</Link>
+                    <Link to={{pathname: "/"}}>Return Home and Log In!</Link>
                   </span>
                 </div>
               ) : (
