@@ -84,7 +84,7 @@ const Uploader = ({ onSuccess }) => {
           <Form method="post" action="#" id="#" onSubmit={formHandler()}
             style={{
               display: "grid", alignContent: "center",justifyContent: "center", marginTop: "5vh", height: "84vh", 
-              backgroundColor: "whitesmoke", color: "black", width: "50%", borderRadius: "50px", border: "solid"
+              backgroundColor: "whitesmoke", color: "black", width: "50%", borderRadius: "50px", border: "solid", padding: "20px 20px"
             }}>
           <Row className="mb-3">
               <h1 style={{ fontSize: "5vw" }}>The Deal</h1>

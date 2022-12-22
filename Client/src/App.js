@@ -150,7 +150,7 @@ const App = () => {
                   item={item}
                   setItem={setItem}
                   setShouldReload={setShouldReload}
-               
+                  user={user}
                 />
               }
             />
