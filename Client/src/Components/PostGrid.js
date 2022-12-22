@@ -19,7 +19,7 @@ function PostGrid({posts, setItem, getImgSrc}) {
   // const imageformat = 'image/jpeg';
   // const exampleimg
   //   = `data:${imageformat};base64,${images}`;
-  console.log(posts)
+  // console.log(posts)
 
   return (
     <>
