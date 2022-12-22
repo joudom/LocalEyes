@@ -10,7 +10,7 @@ import axios from 'axios';
 import './PostItem.css';
 
 
-const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
+const PostItem = ({item, setItem, setShouldReload, posts, setPosts, user}) => {
   
   console.log('item in postitem', item)
 
@@ -82,7 +82,7 @@ const PostItem = ({item, setItem, setShouldReload, posts, setPosts}) => {
           </Col>
           <Col xxl={3} className='text'>
           <h1>The Local</h1><br/>
-            Leo D.<br/>
+            <h1>{user.username}</h1><br/>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7hz0UCaiu9QQw-s7ixndTuLgpyQH8tPqUk-SR5d6i9dLPTVs-OGs5CfqXAq7te6iGC8&usqp=CAU" className='local' alt="..."/>
             <EditModal item={item} setItem={setItem} setShouldReload={setShouldReload}/>
             <Button variant="danger" onClick={deleteItem}>Delete</Button>

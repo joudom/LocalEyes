@@ -85,7 +85,8 @@ const Register = ({user, setUser}) => {
           style={{
             display: "flex", alignItems: "center", justifyContent: "center", marginTop: "5vh", 
             marginBottom: "5vh", marginLeft: "25%", height: "70vh", backgroundColor: "whitesmoke", 
-            opacity: ".9", color: "black", width: "50%", borderRadius: "50px", border: "solid"
+            opacity: ".9", color: "black", width: "50%", borderRadius: "50px", border: "solid",
+            
           }}>
 
             {
