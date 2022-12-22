@@ -2,10 +2,12 @@ const bcrypt = require('bcrypt');
 const Pool = require('pg').Pool;
 const pool = new Pool({
     host: 'localhost',
-    user: 'ec',
+    user: 'jesseoudom',
     database: 'capstone',
     port: 5432
 });
+
+let userLogged = [];
 
   const createUser = async (req, res) => {
     try{
@@ -21,16 +23,19 @@ const pool = new Pool({
 
   const loginUser = (req, res) => {
     const { username, password} = req.body
-    console.log(username, password)
+    console.log('username:', username, '| password:', password)
     pool.query('SELECT * FROM users WHERE username = $1', [username], (error, results) => {
       if (error) {
         res.send({ error: error })
       }
-      console.log(results.rows[0])
       if (results.rows.length > 0) {
         bcrypt.compare(password, results.rows[0].password, (error, response) => {
             if (response) {
-              res.send(response);
+              // res.send(response);
+              req.session.user = results
+              res.send(results);
+              userLogged.push(username);
+              console.log(userLogged)
             } else {
               res.send({ message: "Invalid Credentials" });
             }
@@ -40,6 +45,28 @@ const pool = new Pool({
       }
     })
   }
+
+  const authUser = (req, res) => {
+    // if (req.session.user) {
+    //   res.send({ login: true, user: req.session.user })
+    // } else {
+    //   res.send({ login: false });
+    // }
+    if (req.session.user) {
+      console.log(req.session.user)
+      res.send({ login: true, user: userLogged })
+    } else {
+      res.send({ login: false });
+    }
+}
+
+  const logoutUser = (req, res)=> {
+    req.session.destroy();
+    req.session.user = false
+    let userLogged = []
+    res.render('home', {login: false, user:userLogged});
+    return userLogged
+  };
 
   const filterPosts = (req, res) => {
       const { category } = req.params;
@@ -151,6 +178,7 @@ const pool = new Pool({
     createItem,
     // filterPosts,
     // getFavorites,
-    loginUser
-    // authUser
+    loginUser,
+    authUser,
+    logoutUser
   }
