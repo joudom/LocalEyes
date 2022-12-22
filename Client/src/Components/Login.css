@@ -1,3 +1,7 @@
+.show {
+    font-weight: bold;
+}
+
 .hide {
     display: none;
 }
