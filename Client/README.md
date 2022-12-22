@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+<h1>LocalEyes</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3>The Tech</h3>
+<ul>
+  <li><b>ReactJS</b><i>(via Create React App)</i> - simple library quick enough to serve as our UI</li>
+  <li><b>React Bootstrap</b> - convenient and lightweight styling that made it very easy to bring our vision to life with less code</li>
+  <li><b>CSS3</b> - effective styling option for styles not able to be exexcuted with React Bootstrap</li>
+  <li><b>Node.js</b> - our go-to for the server environment due to familiarity</li>
+  <li><b>Axios</b> - the connection provided from the front-end to the back-end made it easy to use this client for our API calls</li>
+  <li><b>PostgreSQL</b> - being a generally easy database to use led to our decision to use PostgreSQL</li>
+  <li><b>Postico</b> - very structured and clean formatting of queries made this client very easy to use</li>
+  <li><b>pg-promise</b> - allowed us to peform data base queries to our database asynchronously</li>
+  <li><b>Express.js</b> - helped start up our node server and format clean routes for our RESTful API and queries</li>
+  <li><b>Multer</b> - enabled the upload of photos</li>
+  <li><b>bcrypt</b> - provided security by hashing user passwords at registration</li>
+  <li><b>Google Maps API</b> - allowed the dynamic rendering of maps based on user input</li>
+</ul>
+<body>
+  <div>
+    <h3>The Pitch</h3>
+    <p>
+        LocalEyes is a solution for catching those "hidden" deals that get overlooked by lack of advertising, or by just not being familiar with the area         you are in.
+        Whether you are in town on vacation or going out on a business trip, this app allows users to explore wherever they are and to shop how and where         the locals do.
+        Never feel like an outsider with LocalEyes. Not a member? Get Localized Now!
+    </p>
+    <h3>The App</h3>
+    <p>
+        With React Bootstrap and CSS3, a simple direct UI was acheived highlighting the purpose of the application - the deals.
+        User can scroll through posts from locals and view items along with their sales description. 
+        By displaying a photo of the product and a static Google map of the vendor, the user will know exactly what they are looking at and where to get         it. Registered users will have access to upload deals that they may comes across and contribute to the LocalEyes community.
+        The upload feature allows users to enter details of the sales they find and also provide a photo to help others identify the product at hand.
+        With the edit and delete buttons, user can modify their posts after they are uploaded.<br>
+        All registered users have their credentials stored in a database where their passwords are hashed for security.
+        Logins are only allowed with valid credentials. Users are prompted with error messages if credentials are incorrect or if they do not exist               at all. All posts are also stored in the LocalEyes database, which allow posts to be edited and searched for in the application.
+        <br><br>
+    <b>
+        At the end of the day, the goal of this application is to serve as a platform for people to help others. <br>
+        Whether it is by saving money or having         a sense of being included in a community, LocalEyes aims to bring people together.
+    <b>
+    </p>
+  </div>
+</body>
+<footer>  
+  <h1>The Crew</h1> <br>
+  Elouisa Cardano - https://github.com/ejcGH <br>
+  Dave Hilleke - https://github.com/hillekecodes <br>
+  Jesse Oudom - https://github.com/joudom <br>
+</footer>
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
