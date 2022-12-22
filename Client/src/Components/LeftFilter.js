@@ -26,20 +26,11 @@ const LeftFilter = ({ setCategory }) => {
         </CDBSidebarHeader>
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            {/* <NavLink>
-              <CDBSidebarMenuItem
-                icon="wallet"
-                value="price"
-                onClick={() => setCategory("price")}
-              >
-                Price
-              </CDBSidebarMenuItem>
-            </NavLink> */}
             <NavLink>
               <CDBSidebarMenuItem
                 icon="tshirt"
                 value="clothing"
-                onClick={() => setCategory("clothing")}
+                onClick={() => setCategory("Clothing")}
               >
                 Clothing
               </CDBSidebarMenuItem>
@@ -47,7 +38,7 @@ const LeftFilter = ({ setCategory }) => {
             <NavLink>
               <CDBSidebarMenuItem
                 icon="gamepad"
-                onClick={() => setCategory("electronics")}
+                onClick={() => setCategory("Electronics")}
               >
                 Electronics
               </CDBSidebarMenuItem>
@@ -56,7 +47,7 @@ const LeftFilter = ({ setCategory }) => {
               <CDBSidebarMenuItem
                 icon="utensils"
                 value="food"
-                onClick={() => setCategory("food")}
+                onClick={() => setCategory("Food")}
               >
                 Food
               </CDBSidebarMenuItem>
@@ -65,7 +56,7 @@ const LeftFilter = ({ setCategory }) => {
               <CDBSidebarMenuItem
                 icon="shopping-cart"
                 value="general"
-                onClick={() => setCategory("general")}
+                onClick={() => setCategory("General")}
               >
                 General
               </CDBSidebarMenuItem>

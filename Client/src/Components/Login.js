@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -8,6 +8,15 @@ import './Login.css'
 
 const Login = () => {
   const [show, setShow] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginStatus, setLoginStatus] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
+  const [cookie, setCookie] = useState('')  
+  const navigate = useNavigate();
+
+  axios.defaults.withCredentials = true;
+
   const handleShow = () => {
     setShow(true);
   }
@@ -16,15 +25,6 @@ const Login = () => {
     setUsername('');
     setPassword('');
   }
-  
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errMsg, setErrMsg] = useState('');
-  const [loginStatus, setLoginStatus] = useState(false);
-
-  useEffect(()=>{
-    setErrMsg('');
-  }, [username, password])
 
   const getLoggedIn = async (e) => {
     e.preventDefault();
@@ -34,16 +34,51 @@ const Login = () => {
     }).then((response) => {
       if (response.data.message) {
         setErrMsg(response.data.message);
-        setLoginStatus(false);
       } else {
         setLoginStatus(true);
+        setCookie(true)
       }
     });
   };
 
+  const getLoggedOut = async (e) => {
+    e.preventDefault();
+    const response = await axios.post('http://localhost:8000')
+    console.log(response.data)
+      setLoginStatus(false);
+      setCookie('');
+      alert("You've been logged out.");
+      
+  }
+
+  useEffect(()=>{
+    axios.get('http://localhost:8000').then((response)=>{
+      if (response.data.userLoggedIn === true) {
+        setCookie(response.data.user.rows[0].username)
+        console.log('username:', response.data.user.rows[0].username, '| login:', response.data.userLoggedIn)
+      }
+    })
+  }, [])
+
+  useEffect(()=>{
+    setErrMsg('');
+  }, [username, password])
+
   return (
     <>
-      <Button variant="secondary" onClick={handleShow}>Sign in</Button>
+      {/* <Button variant="secondary" onClick={handleShow}>Sign in</Button> */}
+      <Button 
+        variant="light" onClick={handleShow}
+        className={!loginStatus ? "show" : "hide"}
+      >
+        Login
+      </Button>
+      <Button 
+        variant="light" onClick={getLoggedOut}
+        className={!loginStatus ? "hide" : "show"}
+      >
+        Logout
+      </Button>
       <Modal 
               show={show} 
               onHide={handleClose}
@@ -60,9 +95,11 @@ const Login = () => {
             Welcome back {username}!
           </h1>
           <br/>
-          <span>
-          <Button variant="secondary" onClick={handleClose}>Close</Button>
-          </span>
+            <center>
+              <Button variant="secondary" onClick={handleClose}>Close</Button>
+              <Button onClick={()=>navigate('/upload')}>Upload Now</Button>
+            </center>
+          <br/>
         </div>
         ) : 
         (

@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div
       className="footer" 
-      style={{marginTop: "-15px", marginBottom: "-15px"}}
+      style={{marginTop: "-50px", marginBottom: "-15px"}}
       >
       <div>
         <div className="footer-content">

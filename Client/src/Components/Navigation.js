@@ -29,7 +29,7 @@ const Navigation = ({search, setSearch}) => {
           <FaSearchDollar />
         </Navbar.Brand>
         {/* <Search inputValue={search} onInputChange={handleSearch}/> */}
-        <Form inline className="d-flex">
+        <Form className="d-flex">
           <FormControl
             type="text"
             placeholder="search"
