@@ -4,11 +4,39 @@ const cors = require("cors")
 const fileUpload = require('express-fileupload')
 const port = 8000
 const app = express();
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+
+// app.use(cors());
 app.use(express.urlencoded({ extended: true}));
-app.use(cors())
 app.use(fileUpload());
 app.use(express.static('public'))
 const db = require('./queries')
+
+// START COOKIE SECTION
+app.use(
+    cors({
+        origin: ["http://localhost:3000"],
+        methods: ["GET","POST"],
+        credentials: true
+    })
+);
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+    session({
+        key: "demoID",
+        secret: "demoday",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 60 * 60 * 24,
+        }
+    })
+);
+
+// END COOKIE SECTION
 
 app.use(express.json());
 
@@ -26,7 +54,9 @@ const upload = multer({ storage }).array("file")
 //ROUTES
 app.post('/register', db.createUser)
 app.post('/', db.loginUser)
+app.post('/', db.logoutUser)
 app.get('/', db.getPosts) //done
+app.get('/', db.authUser)
 app.get('/item/:id', db.getItem) //done
 app.put('/item/:id', db.updateItem) //done
 app.delete('/item/:id', db.deleteItem)
