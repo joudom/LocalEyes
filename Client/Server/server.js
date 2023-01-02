@@ -9,6 +9,8 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 // app.use(cors());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 app.use(express.urlencoded({ extended: true}));
 app.use(fileUpload());
 app.use(express.static('public'))
@@ -18,7 +20,7 @@ const db = require('./queries')
 app.use(
     cors({
         origin: ["http://localhost:3000"],
-        methods: ["GET","POST", "DELETE"],
+        methods: ["GET","POST","DELETE","PUT"],
         credentials: true
     })
 );
